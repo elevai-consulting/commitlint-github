@@ -9,7 +9,7 @@ export interface Rules {
 }
 
 export interface TCommitlintGitHubConstants {
-  JIRA_RULES: Rules
+  GITHUB_RULES: Rules
   COMMIT_MESSAGE_SEPARATOR: string
   COMMIT_TASK_IDS_SEPARATOR: string
   COMMIT_TASK_STATUS_PATTERN: RegExp

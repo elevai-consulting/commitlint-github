@@ -10,18 +10,18 @@ import githubCommitMessageSeparatorRuleResolver from './rules/githubCommitMessag
 
 export const commitlintPluginGitHub: CommitlintPluginGitHub = {
   rules: {
-    [commitlintGitHubConstants.JIRA_RULES
+    [commitlintGitHubConstants.GITHUB_RULES
       .taskIdEmpty]: githubTaskIdEmptyRuleResolver,
-    [commitlintGitHubConstants.JIRA_RULES
+    [commitlintGitHubConstants.GITHUB_RULES
       .taskIdMinLength]: githubTaskIdMinLengthRuleResolver,
-    [commitlintGitHubConstants.JIRA_RULES
+    [commitlintGitHubConstants.GITHUB_RULES
       .taskIdMaxLength]: githubTaskIdMaxLengthRuleResolver,
-    [commitlintGitHubConstants.JIRA_RULES
+    [commitlintGitHubConstants.GITHUB_RULES
       .taskIdSeparator]: githubTaskIdSeparatorRuleResolver,
-    [commitlintGitHubConstants.JIRA_RULES.taskIdCase]: githubTaskIdCaseRuleResolver,
-    [commitlintGitHubConstants.JIRA_RULES
+    [commitlintGitHubConstants.GITHUB_RULES.taskIdCase]: githubTaskIdCaseRuleResolver,
+    [commitlintGitHubConstants.GITHUB_RULES
       .commitStatusCase]: githubCommitStatusCaseRuleResolver,
-    [commitlintGitHubConstants.JIRA_RULES
+    [commitlintGitHubConstants.GITHUB_RULES
       .commitMessageSeparator]: githubCommitMessageSeparatorRuleResolver,
   },
 }
