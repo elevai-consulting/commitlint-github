@@ -23,7 +23,9 @@
     "url": "https://github.com/Gherciu/commitlint-github/issues"
   },
   "scripts": {
+    "clean": "rm -rf node_modules",
     "build:packages": "lerna run build",
+    "clean:packages": "lerna clean --yes",
     "watch:packages": "lerna run watch",
     "link:packages": "lerna bootstrap",
     "publish:packages": "npm run link:packages && npm run build:packages && lerna publish --message=\"chore: publish changed packages\"",
