@@ -1,4 +1,4 @@
-export const JIRA_RULES = {
+export const GITHUB_RULES = {
   commitStatusCase: 'github-commit-status-case',
   taskIdCase: 'github-task-id-case',
   taskIdSeparator: 'github-task-id-separator',

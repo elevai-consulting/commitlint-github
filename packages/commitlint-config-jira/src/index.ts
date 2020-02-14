@@ -3,25 +3,25 @@ import { CommitlintConfigGitHub } from '../@types'
 
 export const commitlintConfigGitHub: CommitlintConfigGitHub = {
   rules: {
-    [commitlintGitHubConstants.JIRA_RULES.taskIdEmpty]: [2, 'always'],
-    [commitlintGitHubConstants.JIRA_RULES.taskIdMinLength]: [2, 'always', 3],
-    [commitlintGitHubConstants.JIRA_RULES.taskIdMaxLength]: [2, 'always', 9],
-    [commitlintGitHubConstants.JIRA_RULES.taskIdSeparator]: [
+    [commitlintGitHubConstants.GITHUB_RULES.taskIdEmpty]: [2, 'always'],
+    [commitlintGitHubConstants.GITHUB_RULES.taskIdMinLength]: [2, 'always', 3],
+    [commitlintGitHubConstants.GITHUB_RULES.taskIdMaxLength]: [2, 'always', 9],
+    [commitlintGitHubConstants.GITHUB_RULES.taskIdSeparator]: [
       2,
       'always',
       commitlintGitHubConstants.TASK_ID_SEPARATOR,
     ],
-    [commitlintGitHubConstants.JIRA_RULES.taskIdCase]: [
+    [commitlintGitHubConstants.GITHUB_RULES.taskIdCase]: [
       2,
       'always',
       commitlintGitHubConstants.UPPERCASE,
     ],
-    [commitlintGitHubConstants.JIRA_RULES.commitStatusCase]: [
+    [commitlintGitHubConstants.GITHUB_RULES.commitStatusCase]: [
       2,
       'always',
       commitlintGitHubConstants.UPPERCASE,
     ],
-    [commitlintGitHubConstants.JIRA_RULES.commitMessageSeparator]: [
+    [commitlintGitHubConstants.GITHUB_RULES.commitMessageSeparator]: [
       2,
       'always',
       commitlintGitHubConstants.COMMIT_MESSAGE_SEPARATOR,
