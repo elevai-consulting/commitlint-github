@@ -32,18 +32,6 @@
     "lint:packages": "eslint ./packages --ext .ts --max-warnings=0",
     "fix:packages": "eslint ./packages --ext .ts --fix --max-warnings=0"
   },
-  "lint-staged": {
-    "*.{ts}": [
-      "npm run lint:packages",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
