@@ -1,6 +1,6 @@
 import {
   parseCommitMessage,
-  commitlintJiraConstants,
+  commitlintGitHubConstants,
 } from 'commitlint-github-utils'
 import { TRuleResolver } from '../../@types'
 
@@ -16,13 +16,13 @@ const githubTaskIdCaseRuleResolver: TRuleResolver = (
 
   let nonValidTaskId = ''
 
-  if (value === commitlintJiraConstants.UPPERCASE)
+  if (value === commitlintGitHubConstants.UPPERCASE)
     nonValidTaskId =
       commitMessage.commitTaskIds.find(taskId => {
         return taskId !== taskId.toUpperCase()
       }) || ''
 
-  if (value === commitlintJiraConstants.LOWERCASE)
+  if (value === commitlintGitHubConstants.LOWERCASE)
     nonValidTaskId =
       commitMessage.commitTaskIds.find(taskId => {
         return taskId !== taskId.toLowerCase()

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import * as shell from 'shelljs'
 
-describe('commitlintPluginJiraTests', () => {
+describe('commitlintPluginGitHubTests', () => {
   const testCommitMessages = {
     singleScope: 'IB-2121: test commit message',
   }

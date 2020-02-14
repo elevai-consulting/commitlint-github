@@ -1,8 +1,8 @@
-import commitlintPluginJira from '../index'
+import commitlintPluginGitHub from '../index'
 
-describe('commitlintPluginJira', () => {
+describe('commitlintPluginGitHub', () => {
   it('should return a valid config', () => {
-    expect(commitlintPluginJira).toHaveProperty('rules')
-    expect(Object.keys(commitlintPluginJira.rules).length).toBeGreaterThan(0)
+    expect(commitlintPluginGitHub).toHaveProperty('rules')
+    expect(Object.keys(commitlintPluginGitHub.rules).length).toBeGreaterThan(0)
   })
 })

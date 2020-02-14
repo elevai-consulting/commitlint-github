@@ -1,8 +1,8 @@
-export interface CommitlintConfigJira {
+export interface CommitlintConfigGitHub {
   rules: {
     [key: string]: number | (number | string)[]
   }
 }
-declare const commitlintConfigJira: CommitlintConfigJira
+declare const commitlintConfigGitHub: CommitlintConfigGitHub
 
-export default commitlintConfigJira
+export default commitlintConfigGitHub

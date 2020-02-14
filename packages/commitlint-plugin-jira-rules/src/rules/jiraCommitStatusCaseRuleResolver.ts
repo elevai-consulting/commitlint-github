@@ -1,13 +1,13 @@
 import {
   parseCommitMessage,
-  commitlintJiraConstants,
+  commitlintGitHubConstants,
 } from 'commitlint-github-utils'
 import { TRuleResolver } from '../../@types'
 
 const githubCommitStatusCaseRuleResolver: TRuleResolver = (
   parsed,
   _when,
-  value = commitlintJiraConstants.UPPERCASE,
+  value = commitlintGitHubConstants.UPPERCASE,
 ) => {
   const rawCommitMessage = parsed.raw
   if (!rawCommitMessage) return [false, 'Commit message should not be empty']
@@ -19,12 +19,12 @@ const githubCommitStatusCaseRuleResolver: TRuleResolver = (
   let isRuleValid = false
 
   if (
-    value === commitlintJiraConstants.UPPERCASE &&
+    value === commitlintGitHubConstants.UPPERCASE &&
     commitMessage.commitStatus === commitMessage.commitStatus.toUpperCase()
   )
     isRuleValid = true
   if (
-    value === commitlintJiraConstants.LOWERCASE &&
+    value === commitlintGitHubConstants.LOWERCASE &&
     commitMessage.commitStatus === commitMessage.commitStatus.toLowerCase()
   )
     isRuleValid = true

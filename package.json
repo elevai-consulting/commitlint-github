@@ -1,6 +1,6 @@
 {
   "name": "commitlint-github",
-  "description": "✔️❌ Shareable commitlint config enforcing Jira commits messages style",
+  "description": "✔️❌ Shareable commitlint config enforcing GitHub commits messages style",
   "version": "1.0.0",
   "license": "MIT",
   "author": {
