@@ -8,10 +8,10 @@ describe('commitlintPluginJiraTests', () => {
     multyScopeWipTask: '[WIP]IB-2121, IB-21: test commit message',
     emptyTaskIds: ': my commit message',
     missingSeparator: 'IB-21 My commit message',
-    // test data for this issue: https://github.com/Gherciu/commitlint-jira/issues/7
+    // test data for this issue: https://github.com/Gherciu/commitlint-github/issues/7
     multyCommitPartsSeparator:
       'IB-2121: test commit message http://gherciu.github.io',
-    // test data for issue: https://github.com/Gherciu/commitlint-jira/issues/6
+    // test data for issue: https://github.com/Gherciu/commitlint-github/issues/6
     multyLineCommit: `
       IB-2121: test commit message
       My commit message description

@@ -1,7 +1,7 @@
-import { parseCommitMessage } from 'commitlint-jira-utils'
+import { parseCommitMessage } from 'commitlint-github-utils'
 import { TRuleResolver } from '../../@types'
 
-const jiraTaskIdMinLengthRuleResolver: TRuleResolver = (
+const githubTaskIdMinLengthRuleResolver: TRuleResolver = (
   parsed,
   _when,
   value = 3,
@@ -23,4 +23,4 @@ const jiraTaskIdMinLengthRuleResolver: TRuleResolver = (
   ]
 }
 
-export default jiraTaskIdMinLengthRuleResolver
+export default githubTaskIdMinLengthRuleResolver

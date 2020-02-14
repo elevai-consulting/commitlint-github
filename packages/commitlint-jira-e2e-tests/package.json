@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "commitlint-jira-e2e-tests",
+  "name": "commitlint-github-e2e-tests",
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "ts-jest": "^24.1.0",
@@ -10,7 +10,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "commitlint-plugin-jira-rules": "^1.0.0",
-    "commitlint-config-jira": "^1.0.0"
+    "commitlint-plugin-github-rules": "^1.0.0",
+    "commitlint-config-github": "^1.0.0"
   }
 }

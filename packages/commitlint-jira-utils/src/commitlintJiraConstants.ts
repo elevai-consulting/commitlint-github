@@ -1,11 +1,11 @@
 export const JIRA_RULES = {
-  commitStatusCase: 'jira-commit-status-case',
-  taskIdCase: 'jira-task-id-case',
-  taskIdSeparator: 'jira-task-id-separator',
-  taskIdEmpty: 'jira-task-id-empty',
-  taskIdMaxLength: 'jira-task-id-max-length',
-  taskIdMinLength: 'jira-task-id-min-length',
-  commitMessageSeparator: 'jira-commit-message-separator',
+  commitStatusCase: 'github-commit-status-case',
+  taskIdCase: 'github-task-id-case',
+  taskIdSeparator: 'github-task-id-separator',
+  taskIdEmpty: 'github-task-id-empty',
+  taskIdMaxLength: 'github-task-id-max-length',
+  taskIdMinLength: 'github-task-id-min-length',
+  commitMessageSeparator: 'github-commit-message-separator',
 }
 
 export const COMMIT_MESSAGE_SEPARATOR = ':'

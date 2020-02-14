@@ -1,4 +1,4 @@
-import { commitlintJiraConstants } from 'commitlint-jira-utils'
+import { commitlintJiraConstants } from 'commitlint-github-utils'
 import { CommitlintConfigJira } from '../@types'
 
 export const commitlintConfigJira: CommitlintConfigJira = {

@@ -1,11 +1,11 @@
 <div align="center">
   <img width="300" height="200"
-    src="https://raw.githubusercontent.com/Gherciu/commitlint-jira/master/logo.png">
-  <h1>commitlint-plugin-jira-rules</h1>
-  <p>A plugin that implement all jira commits messages style rules and validate commit messages. Part of <a href="https://github.com/Gherciu/commitlint-jira">commitlint-jira</a> monorepo</p>
+    src="https://raw.githubusercontent.com/Gherciu/commitlint-github/master/logo.png">
+  <h1>commitlint-plugin-github-rules</h1>
+  <p>A plugin that implement all github commits messages style rules and validate commit messages. Part of <a href="https://github.com/Gherciu/commitlint-github">commitlint-github</a> monorepo</p>
 </div>
 
-[![GitHub](https://img.shields.io/github/license/Gherciu/commitlint-jira)](https://github.com/Gherciu/commitlint-jira/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/Gherciu/commitlint-github)](https://github.com/Gherciu/commitlint-github/blob/master/LICENSE)
 [![Multipack](https://img.shields.io/badge/Generated%20from-Gherciu%2Fmultipack-green)](https://github.com/Gherciu/multipack)
 
 ## Getting started.
@@ -13,19 +13,19 @@
 ##### Install dependencies
 
 ```bash
-npm install --save-dev @commitlint/cli commitlint-plugin-jira-rules commitlint-config-jira
+npm install --save-dev @commitlint/cli commitlint-plugin-github-rules commitlint-config-github
 ```
 
-- [commitlint-config-jira](https://github.com/Gherciu/commitlint-jira/tree/master/packages/commitlint-config-jira) - is a **recomended** config who contain preconfigured rules for jira commits messages style. See all rules in description below
-- [commitlint-plugin-jira-rules](https://github.com/Gherciu/commitlint-jira/tree/master/packages/commitlint-plugin-jira-rules) - is a plugin that implement all jira commits messages style rules and validate commit messages
+- [commitlint-config-github](https://github.com/Gherciu/commitlint-github/tree/master/packages/commitlint-config-github) - is a **recomended** config who contain preconfigured rules for github commits messages style. See all rules in description below
+- [commitlint-plugin-github-rules](https://github.com/Gherciu/commitlint-github/tree/master/packages/commitlint-plugin-github-rules) - is a plugin that implement all github commits messages style rules and validate commit messages
 
-##### Configure commitlint to use jira commits messages style config
+##### Configure commitlint to use github commits messages style config
 
 ```js
 // commitlint.config.js
 module.exports = {
-  plugins: ['commitlint-plugin-jira-rules'],
-  extends: ['jira'],
+  plugins: ['commitlint-plugin-github-rules'],
+  extends: ['github'],
 }
 ```
 
@@ -44,7 +44,7 @@ module.exports = {
 
 ## Rules
 
-`jira-task-id-empty` - this rule check if commit message task id is not empty.
+`github-task-id-empty` - this rule check if commit message task id is not empty.
 
 ```bash
 // If your task do not have an id use a conventional task id e.g: IB-0000
@@ -56,10 +56,10 @@ git commit -m"IB-2121, IB-21: My commit message body"
 git commit -m"IB-0000: My commit message body"
 ```
 
-`jira-task-id-max-length` - this rule check if jira task id length is loonger that the provided value.
+`github-task-id-max-length` - this rule check if github task id length is loonger that the provided value.
 
 ```bash
-// Preconfigured and recomended value in commitlint-config-jira is 9 chars
+// Preconfigured and recomended value in commitlint-config-github is 9 chars
 // ❌ Bad commit messages
 git commit -m"IB-2121212121212121: My commit message body"
 // ✅ Good commit messages
@@ -67,10 +67,10 @@ git commit -m"IB-2121: My commit message body"
 git commit -m"IB-21: My commit message body"
 ```
 
-`jira-task-id-min-length` - this rule check if jira task id length is shorter that the provided value.
+`github-task-id-min-length` - this rule check if github task id length is shorter that the provided value.
 
 ```bash
-// Preconfigured and recomended value in commitlint-config-jira is 3 chars
+// Preconfigured and recomended value in commitlint-config-github is 3 chars
 // ❌ Bad commit messages
 git commit -m"I1: My commit message body"
 // ✅ Good commit messages
@@ -78,10 +78,10 @@ git commit -m"IB-2121: My commit message body"
 git commit -m"IB-21: My commit message body"
 ```
 
-`jira-task-id-case` - this rule check if taskId is in provided case.
+`github-task-id-case` - this rule check if taskId is in provided case.
 
 ```bash
-// Preconfigured and recomended value in commitlint-config-jira is "uppercase"
+// Preconfigured and recomended value in commitlint-config-github is "uppercase"
 // ❌ Bad commit messages
 git commit -m"ib-21: My commit message body"
 // ✅ Good commit messages
@@ -89,10 +89,10 @@ git commit -m"IB-2121, IB-21: My commit message body"
 git commit -m"IB-21: My commit message body"
 ```
 
-`jira-task-id-separator` - this rule check if taskId header and footer is separated with provided value.
+`github-task-id-separator` - this rule check if taskId header and footer is separated with provided value.
 
 ```bash
-// Preconfigured and recomended value in commitlint-config-jira is "-"
+// Preconfigured and recomended value in commitlint-config-github is "-"
 // ❌ Bad commit messages
 git commit -m"IB/21: My commit message body"
 git commit -m"IB_21 :My commit message body"
@@ -101,20 +101,20 @@ git commit -m"IB-2121, IB-21: My commit message body"
 git commit -m"IB-21: My commit message body"
 ```
 
-`jira-commit-status-case` - this rule check if commit status is in provided case.
+`github-commit-status-case` - this rule check if commit status is in provided case.
 
 ```bash
-// Preconfigured and recomended value in commitlint-config-jira is "uppercase"
+// Preconfigured and recomended value in commitlint-config-github is "uppercase"
 // ❌ Bad commit messages
 git commit -m"[wip]IB-21: My commit message body"
 // ✅ Good commit messages
 git commit -m"[WIP]IB-21: My commit message body"
 ```
 
-`jira-commit-message-separator` - this rule check if commit message separator match provided separator.
+`github-commit-message-separator` - this rule check if commit message separator match provided separator.
 
 ```bash
-// Preconfigured and recomended value in commitlint-config-jira is ":"
+// Preconfigured and recomended value in commitlint-config-github is ":"
 // ❌ Bad commit messages
 git commit -m"IB-21/ My commit message body"
 git commit -m"IB-21 - My commit message body"
@@ -123,18 +123,18 @@ git commit -m"IB-21% My commit message body"
 git commit -m"IB-21: My commit message body"
 ```
 
-## Customise/Override `commitlint-jira-config` rules
+## Customise/Override `commitlint-github-config` rules
 
 ```diff
 // commitlint.config.js
 module.exports = {
-  plugins: ['commitlint-plugin-jira-rules'],
-  extends: ['jira'],
+  plugins: ['commitlint-plugin-github-rules'],
+  extends: ['github'],
   rules: {
   // to Customise/Override a rule
-+  'jira-task-id-max-length': [2, 'always', 10]
++  'github-task-id-max-length': [2, 'always', 10]
   // to turn off a rule
-+ 'jira-task-id-max-length': 0
++ 'github-task-id-max-length': 0
   },
 }
 ```
@@ -153,7 +153,7 @@ module.exports = {
 
 ## Author
 
-**[@Gherciu/commitlint-jira](https://github.com/Gherciu/commitlint-jira)** © [GHERCIU](https://github.com/Gherciu), Released under the [MIT](https://github.com/Gherciu/commitlint-jira/blob/master/LICENSE) License.<br>
-Authored and maintained by GHERCIU with help from contributors ([list](https://github.com/Gherciu/commitlint-jira/contributors)).
+**[@Gherciu/commitlint-github](https://github.com/Gherciu/commitlint-github)** © [GHERCIU](https://github.com/Gherciu), Released under the [MIT](https://github.com/Gherciu/commitlint-github/blob/master/LICENSE) License.<br>
+Authored and maintained by GHERCIU with help from contributors ([list](https://github.com/Gherciu/commitlint-github/contributors)).
 
-#### If you like this repository star⭐ and watch👀 on [GitHub](https://github.com/Gherciu/commitlint-jira)
+#### If you like this repository star⭐ and watch👀 on [GitHub](https://github.com/Gherciu/commitlint-github)

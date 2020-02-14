@@ -1,16 +1,16 @@
-import jiraTaskIdSeparatorRuleResolver from '../jiraTaskIdSeparatorRuleResolver'
+import githubTaskIdSeparatorRuleResolver from '../githubTaskIdSeparatorRuleResolver'
 
-describe('jiraTaskIdSeparatorRuleResolver', () => {
+describe('githubTaskIdSeparatorRuleResolver', () => {
   it('should return a error response if taskIds separator is incorect', () => {
     const parsed = {
       raw: 'I/111: my commit message',
     }
-    expect(jiraTaskIdSeparatorRuleResolver(parsed)[0]).toEqual(false)
+    expect(githubTaskIdSeparatorRuleResolver(parsed)[0]).toEqual(false)
   })
   it('should return a success response if taskIds separator is corect', () => {
     const parsed = {
       raw: 'IB-21: my commit message',
     }
-    expect(jiraTaskIdSeparatorRuleResolver(parsed)[0]).toEqual(true)
+    expect(githubTaskIdSeparatorRuleResolver(parsed)[0]).toEqual(true)
   })
 })

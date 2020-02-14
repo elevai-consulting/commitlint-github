@@ -10,7 +10,7 @@ import {
 const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
   /**
    * Description separator is used to separe commit parts without description
-   * Read more about this issue: https://github.com/Gherciu/commitlint-jira/issues/6
+   * Read more about this issue: https://github.com/Gherciu/commitlint-github/issues/6
    */
   const commitMessage = rawCommitMessage
     .split(COMMIT_DESCRIPTION_SEPARATOR)
@@ -33,7 +33,7 @@ const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
    * Note: rest of parts should be joined with COMMIT_MESSAGE_SEPARATOR
    *  because is posible that the commit message footer to contain symbols equal
    *  with  COMMIT_MESSAGE_SEPARATOR then the commit footer will be resolved incorect
-   * More info about this issue: https://github.com/Gherciu/commitlint-jira/issues/7
+   * More info about this issue: https://github.com/Gherciu/commitlint-github/issues/7
    */
   const commitFooter =
     commitMessageParts.length > 2

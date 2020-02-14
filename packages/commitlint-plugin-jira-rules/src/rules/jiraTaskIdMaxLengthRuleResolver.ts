@@ -1,7 +1,7 @@
-import { parseCommitMessage } from 'commitlint-jira-utils'
+import { parseCommitMessage } from 'commitlint-github-utils'
 import { TRuleResolver } from '../../@types'
 
-const jiraTaskIdMaxLengthRuleResolver: TRuleResolver = (
+const githubTaskIdMaxLengthRuleResolver: TRuleResolver = (
   parsed,
   _when,
   value = 9,
@@ -22,4 +22,4 @@ const jiraTaskIdMaxLengthRuleResolver: TRuleResolver = (
     `${nonValidTaskId} taskId must not be loonger than ${value} characters`,
   ]
 }
-export default jiraTaskIdMaxLengthRuleResolver
+export default githubTaskIdMaxLengthRuleResolver

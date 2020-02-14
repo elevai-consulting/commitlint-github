@@ -1,10 +1,10 @@
 import {
   parseCommitMessage,
   commitlintJiraConstants,
-} from 'commitlint-jira-utils'
+} from 'commitlint-github-utils'
 import { TRuleResolver } from '../../@types'
 
-const jiraTaskIdCaseRuleResolver: TRuleResolver = (
+const githubTaskIdCaseRuleResolver: TRuleResolver = (
   parsed,
   _when,
   value = 'uppercase',
@@ -32,4 +32,4 @@ const jiraTaskIdCaseRuleResolver: TRuleResolver = (
 
   return [isRuleValid, `${nonValidTaskId} taskId must be ${value} case`]
 }
-export default jiraTaskIdCaseRuleResolver
+export default githubTaskIdCaseRuleResolver

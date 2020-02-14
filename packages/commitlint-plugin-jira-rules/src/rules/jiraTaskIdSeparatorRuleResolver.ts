@@ -1,11 +1,11 @@
 import {
   parseCommitMessage,
   commitlintJiraConstants,
-} from 'commitlint-jira-utils'
+} from 'commitlint-github-utils'
 
 import { TRuleResolver } from '../../@types'
 
-const jiraTaskIdSeparatorRuleResolver: TRuleResolver = (
+const githubTaskIdSeparatorRuleResolver: TRuleResolver = (
   parsed,
   _when,
   value = commitlintJiraConstants.TASK_ID_SEPARATOR,
@@ -26,4 +26,4 @@ const jiraTaskIdSeparatorRuleResolver: TRuleResolver = (
     `${nonValidTaskId} taskId header and footer must be separated with "${value}" e.g: IB-2121`,
   ]
 }
-export default jiraTaskIdSeparatorRuleResolver
+export default githubTaskIdSeparatorRuleResolver
