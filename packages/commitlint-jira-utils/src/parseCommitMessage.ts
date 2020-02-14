@@ -5,7 +5,7 @@ import {
   COMMIT_TASK_STATUS_PATTERN,
   COMMIT_STATUS_SEPARATORS,
   COMMIT_DESCRIPTION_SEPARATOR,
-} from './commitlintJiraConstants'
+} from './commitlintGitHubConstants'
 
 const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
   /**

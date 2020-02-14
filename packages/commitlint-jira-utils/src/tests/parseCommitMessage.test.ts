@@ -1,6 +1,6 @@
 import parseCommitMessage from '../parseCommitMessage'
 
-describe('commitlintPluginJiraTests', () => {
+describe('commitlintPluginGitHubTests', () => {
   const testCommitMessages = {
     singleScope: 'IB-2121: test commit message',
     multyScope: 'IB-2121, IB-21: test commit message',

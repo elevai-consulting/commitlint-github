@@ -1,11 +1,11 @@
-import * as commitlintJiraConstants from './commitlintJiraConstants'
+import * as commitlintGitHubConstants from './commitlintGitHubConstants'
 import parseCommitMessage from './parseCommitMessage'
-import { CommitlintJiraUtils } from '../@types'
+import { CommitlintGitHubUtils } from '../@types'
 
-const commitlintJiraUtils: CommitlintJiraUtils = {
-  commitlintJiraConstants,
+const commitlintGitHubUtils: CommitlintGitHubUtils = {
+  commitlintGitHubConstants,
   parseCommitMessage,
 }
 
-export { commitlintJiraConstants, parseCommitMessage }
-export default commitlintJiraUtils
+export { commitlintGitHubConstants, parseCommitMessage }
+export default commitlintGitHubUtils

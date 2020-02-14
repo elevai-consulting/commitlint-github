@@ -8,7 +8,7 @@ export interface Rules {
   commitMessageSeparator: string
 }
 
-export interface TCommitlintJiraConstants {
+export interface TCommitlintGitHubConstants {
   JIRA_RULES: Rules
   COMMIT_MESSAGE_SEPARATOR: string
   COMMIT_TASK_IDS_SEPARATOR: string
@@ -32,13 +32,13 @@ export type TParseCommitMessage = (
   commitStatus: string
 }
 
-export interface CommitlintJiraUtils {
+export interface CommitlintGitHubUtils {
   parseCommitMessage: TParseCommitMessage
-  commitlintJiraConstants: TCommitlintJiraConstants
+  commitlintGitHubConstants: TCommitlintGitHubConstants
 }
 
-export const commitlintJiraConstants: TCommitlintJiraConstants
+export const commitlintGitHubConstants: TCommitlintGitHubConstants
 export const parseCommitMessage: TParseCommitMessage
 
-declare const commitlintJiraUtils: CommitlintJiraUtils
-export default commitlintJiraUtils
+declare const commitlintGitHubUtils: CommitlintGitHubUtils
+export default commitlintGitHubUtils

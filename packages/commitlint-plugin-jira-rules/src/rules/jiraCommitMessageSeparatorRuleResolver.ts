@@ -1,11 +1,11 @@
-import { commitlintJiraConstants } from 'commitlint-github-utils'
+import { commitlintGitHubConstants } from 'commitlint-github-utils'
 
 import { TRuleResolver } from '../../@types'
 
 const githubCommitMessageSeparatorRuleResolver: TRuleResolver = (
   parsed,
   _when,
-  value = commitlintJiraConstants.COMMIT_MESSAGE_SEPARATOR,
+  value = commitlintGitHubConstants.COMMIT_MESSAGE_SEPARATOR,
 ) => {
   const rawCommitMessage = parsed.raw
   if (!rawCommitMessage) return [false, 'Commit message should not be empty']

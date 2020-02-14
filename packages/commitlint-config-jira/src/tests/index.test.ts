@@ -1,8 +1,8 @@
-import commitlintConfigJira from '../index'
+import commitlintConfigGitHub from '../index'
 
-describe('commitlintConfigJira', () => {
+describe('commitlintConfigGitHub', () => {
   it('should return a valid config', () => {
-    expect(commitlintConfigJira).toHaveProperty('rules')
-    expect(Object.keys(commitlintConfigJira.rules).length).toBeGreaterThan(0)
+    expect(commitlintConfigGitHub).toHaveProperty('rules')
+    expect(Object.keys(commitlintConfigGitHub.rules).length).toBeGreaterThan(0)
   })
 })

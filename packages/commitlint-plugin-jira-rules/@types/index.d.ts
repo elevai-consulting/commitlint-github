@@ -17,11 +17,11 @@ export type TRuleResolver = (
   value?: string | number | (string | number)[],
 ) => (string | boolean)[]
 
-export interface CommitlintPluginJira {
+export interface CommitlintPluginGitHub {
   rules: {
     [key: string]: TRuleResolver
   }
 }
-declare const commitlintPluginJira: CommitlintPluginJira
+declare const commitlintPluginGitHub: CommitlintPluginGitHub
 
-export default commitlintPluginJira
+export default commitlintPluginGitHub

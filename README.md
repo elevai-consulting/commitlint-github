@@ -2,7 +2,7 @@
   <img height="200"
     src="https://raw.githubusercontent.com/Gherciu/commitlint-github/master/logo.png">
   <h1>commitlint-github</h1>
-  <p>commitlint-github checks if your commit messages meet the Jira conventional commit format.</p>
+  <p>commitlint-github checks if your commit messages meet the GitHub conventional commit format.</p>
 </div>
 
 [![GitHub](https://img.shields.io/github/license/Gherciu/commitlint-github)](https://github.com/Gherciu/commitlint-github/blob/master/LICENSE)
