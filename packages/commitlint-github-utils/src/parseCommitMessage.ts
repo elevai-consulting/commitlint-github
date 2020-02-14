@@ -2,8 +2,6 @@ import { TParseCommitMessage } from '../@types'
 import {
   COMMIT_MESSAGE_SEPARATOR,
   COMMIT_TASK_IDS_SEPARATOR,
-  COMMIT_TASK_STATUS_PATTERN,
-  COMMIT_STATUS_SEPARATORS,
   COMMIT_DESCRIPTION_SEPARATOR,
 } from './commitlintGitHubConstants'
 
@@ -24,9 +22,7 @@ const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
    */
   const rawCommitHeader =
     commitMessageParts.length >= 2 ? commitMessageParts[0] : ''
-  const commitHeader = rawCommitHeader
-    .replace(COMMIT_TASK_STATUS_PATTERN, '')
-    .trim()
+  const commitHeader = rawCommitHeader.trim()
   /**
    * if commit parts length is greater than 2 return all parts without first part
    * because first part is commit header
@@ -43,11 +39,6 @@ const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
           .trim()
       : commitMessageParts[commitMessageParts.length - 1].trim()
 
-  const rawCommitStatus = rawCommitHeader.split(COMMIT_STATUS_SEPARATORS.end)
-  const commitStatus = rawCommitStatus.length
-    ? rawCommitStatus[0].replace(COMMIT_STATUS_SEPARATORS.start, '').trim()
-    : ''
-
   const commitTaskIds = commitHeader
     .split(COMMIT_TASK_IDS_SEPARATOR)
     .map(taskId => taskId.trim())
@@ -57,7 +48,6 @@ const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
     commitTaskIds,
     commitFooter,
     commitHeader,
-    commitStatus,
   }
 }
 

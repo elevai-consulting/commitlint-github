@@ -16,11 +16,6 @@ export const commitlintConfigGitHub: CommitlintConfigGitHub = {
       'always',
       commitlintGitHubConstants.UPPERCASE,
     ],
-    [commitlintGitHubConstants.GITHUB_RULES.commitStatusCase]: [
-      2,
-      'always',
-      commitlintGitHubConstants.UPPERCASE,
-    ],
     [commitlintGitHubConstants.GITHUB_RULES.commitMessageSeparator]: [
       2,
       'always',
