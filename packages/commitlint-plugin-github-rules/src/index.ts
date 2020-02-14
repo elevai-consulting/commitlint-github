@@ -5,7 +5,6 @@ import githubTaskIdMinLengthRuleResolver from './rules/githubTaskIdMinLengthRule
 import githubTaskIdEmptyRuleResolver from './rules/githubTaskIdEmptyRuleResolver'
 import githubTaskIdSeparatorRuleResolver from './rules/githubTaskIdSeparatorRuleResolver'
 import githubTaskIdCaseRuleResolver from './rules/githubTaskIdCaseRuleResolver'
-import githubCommitStatusCaseRuleResolver from './rules/githubCommitStatusCaseRuleResolver'
 import githubCommitMessageSeparatorRuleResolver from './rules/githubCommitMessageSeparatorRuleResolver'
 
 export const commitlintPluginGitHub: CommitlintPluginGitHub = {
@@ -18,9 +17,8 @@ export const commitlintPluginGitHub: CommitlintPluginGitHub = {
       .taskIdMaxLength]: githubTaskIdMaxLengthRuleResolver,
     [commitlintGitHubConstants.GITHUB_RULES
       .taskIdSeparator]: githubTaskIdSeparatorRuleResolver,
-    [commitlintGitHubConstants.GITHUB_RULES.taskIdCase]: githubTaskIdCaseRuleResolver,
     [commitlintGitHubConstants.GITHUB_RULES
-      .commitStatusCase]: githubCommitStatusCaseRuleResolver,
+      .taskIdCase]: githubTaskIdCaseRuleResolver,
     [commitlintGitHubConstants.GITHUB_RULES
       .commitMessageSeparator]: githubCommitMessageSeparatorRuleResolver,
   },

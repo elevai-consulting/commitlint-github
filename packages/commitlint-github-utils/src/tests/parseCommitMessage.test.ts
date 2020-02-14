@@ -4,8 +4,8 @@ describe('commitlintPluginGitHubTests', () => {
   const testCommitMessages = {
     singleScope: 'IB-2121: test commit message',
     multyScope: 'IB-2121, IB-21: test commit message',
-    singleScopeWipTask: '[WIP]IB-2121: test commit message',
-    multyScopeWipTask: '[WIP]IB-2121, IB-21: test commit message',
+    // singleScopeWipTask: '[WIP]IB-2121: test commit message',
+    // multyScopeWipTask: '[WIP]IB-2121, IB-21: test commit message',
     emptyTaskIds: ': my commit message',
     missingSeparator: 'IB-21 My commit message',
     // test data for this issue: https://github.com/Gherciu/commitlint-github/issues/7
@@ -24,30 +24,21 @@ describe('commitlintPluginGitHubTests', () => {
     expect(
       parseCommitMessage(testCommitMessages.singleScope).commitTaskIds,
     ).toEqual(['IB-2121'])
-    expect(
-      parseCommitMessage(testCommitMessages.singleScopeWipTask).commitTaskIds,
-    ).toEqual(['IB-2121'])
+    // expect(
+    //   parseCommitMessage(testCommitMessages.singleScopeWipTask).commitTaskIds,
+    // ).toEqual(['IB-2121'])
     expect(
       parseCommitMessage(testCommitMessages.multyScope).commitTaskIds,
     ).toEqual(['IB-2121', 'IB-21'])
-    expect(
-      parseCommitMessage(testCommitMessages.multyScopeWipTask).commitTaskIds,
-    ).toEqual(['IB-2121', 'IB-21'])
+    // expect(
+    //   parseCommitMessage(testCommitMessages.multyScopeWipTask).commitTaskIds,
+    // ).toEqual(['IB-2121', 'IB-21'])
   })
 
   it('should return correct commitFooter', () => {
     expect(
       parseCommitMessage(testCommitMessages.singleScope).commitFooter,
     ).toEqual('test commit message')
-  })
-
-  it('should return correct commitStatus', () => {
-    expect(
-      parseCommitMessage(testCommitMessages.singleScopeWipTask).commitStatus,
-    ).toEqual('WIP')
-    expect(
-      parseCommitMessage(testCommitMessages.multyScopeWipTask).commitStatus,
-    ).toEqual('WIP')
   })
 
   it('should return empty array of taskIds', () => {
@@ -59,7 +50,7 @@ describe('commitlintPluginGitHubTests', () => {
     ).toEqual([])
   })
 
-  it('should return corect taskIds and commit footer if a url is added in commit message or multiple commit status separators', () => {
+  it('should return corect taskIds and commit footer if a url is added in commit message', () => {
     expect(
       parseCommitMessage(testCommitMessages.multyCommitPartsSeparator)
         .commitTaskIds,
