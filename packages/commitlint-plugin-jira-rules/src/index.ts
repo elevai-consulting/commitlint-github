@@ -1,28 +1,28 @@
-import { commitlintJiraConstants } from 'commitlint-jira-utils'
+import { commitlintJiraConstants } from 'commitlint-github-utils'
 import { CommitlintPluginJira } from '../@types'
-import jiraTaskIdMaxLengthRuleResolver from './rules/jiraTaskIdMaxLengthRuleResolver'
-import jiraTaskIdMinLengthRuleResolver from './rules/jiraTaskIdMinLengthRuleResolver'
-import jiraTaskIdEmptyRuleResolver from './rules/jiraTaskIdEmptyRuleResolver'
-import jiraTaskIdSeparatorRuleResolver from './rules/jiraTaskIdSeparatorRuleResolver'
-import jiraTaskIdCaseRuleResolver from './rules/jiraTaskIdCaseRuleResolver'
-import jiraCommitStatusCaseRuleResolver from './rules/jiraCommitStatusCaseRuleResolver'
-import jiraCommitMessageSeparatorRuleResolver from './rules/jiraCommitMessageSeparatorRuleResolver'
+import githubTaskIdMaxLengthRuleResolver from './rules/githubTaskIdMaxLengthRuleResolver'
+import githubTaskIdMinLengthRuleResolver from './rules/githubTaskIdMinLengthRuleResolver'
+import githubTaskIdEmptyRuleResolver from './rules/githubTaskIdEmptyRuleResolver'
+import githubTaskIdSeparatorRuleResolver from './rules/githubTaskIdSeparatorRuleResolver'
+import githubTaskIdCaseRuleResolver from './rules/githubTaskIdCaseRuleResolver'
+import githubCommitStatusCaseRuleResolver from './rules/githubCommitStatusCaseRuleResolver'
+import githubCommitMessageSeparatorRuleResolver from './rules/githubCommitMessageSeparatorRuleResolver'
 
 export const commitlintPluginJira: CommitlintPluginJira = {
   rules: {
     [commitlintJiraConstants.JIRA_RULES
-      .taskIdEmpty]: jiraTaskIdEmptyRuleResolver,
+      .taskIdEmpty]: githubTaskIdEmptyRuleResolver,
     [commitlintJiraConstants.JIRA_RULES
-      .taskIdMinLength]: jiraTaskIdMinLengthRuleResolver,
+      .taskIdMinLength]: githubTaskIdMinLengthRuleResolver,
     [commitlintJiraConstants.JIRA_RULES
-      .taskIdMaxLength]: jiraTaskIdMaxLengthRuleResolver,
+      .taskIdMaxLength]: githubTaskIdMaxLengthRuleResolver,
     [commitlintJiraConstants.JIRA_RULES
-      .taskIdSeparator]: jiraTaskIdSeparatorRuleResolver,
-    [commitlintJiraConstants.JIRA_RULES.taskIdCase]: jiraTaskIdCaseRuleResolver,
+      .taskIdSeparator]: githubTaskIdSeparatorRuleResolver,
+    [commitlintJiraConstants.JIRA_RULES.taskIdCase]: githubTaskIdCaseRuleResolver,
     [commitlintJiraConstants.JIRA_RULES
-      .commitStatusCase]: jiraCommitStatusCaseRuleResolver,
+      .commitStatusCase]: githubCommitStatusCaseRuleResolver,
     [commitlintJiraConstants.JIRA_RULES
-      .commitMessageSeparator]: jiraCommitMessageSeparatorRuleResolver,
+      .commitMessageSeparator]: githubCommitMessageSeparatorRuleResolver,
   },
 }
 

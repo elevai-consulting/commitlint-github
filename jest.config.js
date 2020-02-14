@@ -1,7 +1,7 @@
 module.exports = {
   collectCoverageFrom: [
     'packages/**/*.(ts)',
-    '!packages/commitlint-jira-e2e-tests/**',
+    '!packages/commitlint-github-e2e-tests/**',
   ],
   coverageThreshold: {
     global: {
@@ -12,6 +12,6 @@ module.exports = {
     },
   },
   testRegex: 'tests/.*\\.test\\.ts$',
-  testPathIgnorePatterns: ['/packages/commitlint-jira-e2e-tests/'],
+  testPathIgnorePatterns: ['/packages/commitlint-github-e2e-tests/'],
   preset: 'ts-jest',
 }

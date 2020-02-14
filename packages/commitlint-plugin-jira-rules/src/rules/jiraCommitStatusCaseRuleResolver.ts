@@ -1,10 +1,10 @@
 import {
   parseCommitMessage,
   commitlintJiraConstants,
-} from 'commitlint-jira-utils'
+} from 'commitlint-github-utils'
 import { TRuleResolver } from '../../@types'
 
-const jiraCommitStatusCaseRuleResolver: TRuleResolver = (
+const githubCommitStatusCaseRuleResolver: TRuleResolver = (
   parsed,
   _when,
   value = commitlintJiraConstants.UPPERCASE,
@@ -34,4 +34,4 @@ const jiraCommitStatusCaseRuleResolver: TRuleResolver = (
     `${commitMessage.commitStatus} commitStatus must be ${value} case`,
   ]
 }
-export default jiraCommitStatusCaseRuleResolver
+export default githubCommitStatusCaseRuleResolver

@@ -1,8 +1,8 @@
-import { commitlintJiraConstants } from 'commitlint-jira-utils'
+import { commitlintJiraConstants } from 'commitlint-github-utils'
 
 import { TRuleResolver } from '../../@types'
 
-const jiraCommitMessageSeparatorRuleResolver: TRuleResolver = (
+const githubCommitMessageSeparatorRuleResolver: TRuleResolver = (
   parsed,
   _when,
   value = commitlintJiraConstants.COMMIT_MESSAGE_SEPARATOR,
@@ -25,4 +25,4 @@ const jiraCommitMessageSeparatorRuleResolver: TRuleResolver = (
     `Commit message parts must be separated with "${value}" e.g: IB-2121${value}My commit message body`,
   ]
 }
-export default jiraCommitMessageSeparatorRuleResolver
+export default githubCommitMessageSeparatorRuleResolver
