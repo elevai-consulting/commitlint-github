@@ -26,6 +26,7 @@ export type ParserOptions = {
 
 export type ParsedCommitMessage = {
   issueNumbers: number[];
+  rawIssueNumbers?: string;
   isWip: boolean;
   type?: string;
   subject?: string;

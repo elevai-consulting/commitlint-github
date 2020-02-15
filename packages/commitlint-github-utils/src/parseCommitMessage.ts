@@ -27,6 +27,7 @@ const parseDescription = (groups: { [key: string]: string }): [string, string[]]
 
 const parseCommitMessage: CommitParser = (rawCommitMessage: string): ParsedCommitMessage => {
   let issueNumbers: number[] = [];
+  let rawIssueNumbers: string | undefined;
   let type: string | undefined;
   let isWip = false;
   let subject: string | undefined;
@@ -34,7 +35,8 @@ const parseCommitMessage: CommitParser = (rawCommitMessage: string): ParsedCommi
 
   const issueNumbersWithPossibleTypeGroups = parseCommit(rawCommitMessage, ISSUE_NUMBERS_PATTERN);
   if (issueNumbersWithPossibleTypeGroups) {
-    issueNumbers = parseIssues(issueNumbersWithPossibleTypeGroups.issue);
+    rawIssueNumbers = issueNumbersWithPossibleTypeGroups.issue;
+    issueNumbers = parseIssues(rawIssueNumbers);
 
     // eslint-disable-next-line prefer-destructuring
     type = issueNumbersWithPossibleTypeGroups.type;
@@ -53,6 +55,7 @@ const parseCommitMessage: CommitParser = (rawCommitMessage: string): ParsedCommi
 
   return {
     issueNumbers,
+    rawIssueNumbers,
     isWip,
     type,
     subject,
