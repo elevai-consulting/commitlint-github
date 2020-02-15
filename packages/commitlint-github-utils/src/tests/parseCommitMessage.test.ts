@@ -4,16 +4,6 @@ import parseCommitMessage from '../parseCommitMessage';
 const COMMIT_MESSAGE = 'Test commit message';
 
 describe('commitlintPluginGitHubTests', () => {
-  const testCommitMessages = {
-    multiLineCommit: `
-      (#123) ${COMMIT_MESSAGE}
-
-      My commit message description
-        - SUBTASK-1: I added a new feature
-        * SUBTASK-2: I fixed a issue
-    `,
-  };
-
   it('should return correct issue numbers', () => {
     expect(
       parseCommitMessage(`(#1) ${COMMIT_MESSAGE}`).issueNumbers
@@ -105,12 +95,12 @@ describe('commitlintPluginGitHubTests', () => {
   it('should return no raw issue numbers', () => {
     expect(
       parseCommitMessage('My commit message').rawIssueNumbers
-    ).toEqual(null);
+    ).toEqual(undefined);
 
     // Issue numbers not at the beginning
     expect(
       parseCommitMessage('My commit message (#1)').rawIssueNumbers
-    ).toEqual(null);
+    ).toEqual(undefined);
 
     // Empty brackets should return an empty String (not null)
     expect(
@@ -210,15 +200,15 @@ describe('commitlintPluginGitHubTests', () => {
   it('should return correct type', () => {
     expect(
       parseCommitMessage(`(#1) ${COMMIT_MESSAGE}`).type
-    ).toEqual(null);
+    ).toEqual(undefined);
 
     expect(
       parseCommitMessage(`(#1, #2) ${COMMIT_MESSAGE}`).type
-    ).toEqual(null);
+    ).toEqual(undefined);
 
     expect(
       parseCommitMessage(`(#1,#2) ${COMMIT_MESSAGE}`).type
-    ).toEqual(null);
+    ).toEqual(undefined);
 
     expect(
       parseCommitMessage(`(#123) chore: ${COMMIT_MESSAGE}`).type
