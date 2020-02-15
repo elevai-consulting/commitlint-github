@@ -1,29 +1,20 @@
 import { CommitParser, ParsedCommitMessage } from '../@types';
-import {
-  ISSUE_NUMBERS_PATTERN,
-  COMMIT_DESCRIPTION_SEPARATOR,
-} from './commitlintGitHubConstants';
+import { ISSUE_NUMBERS_PATTERN, COMMIT_DESCRIPTION_SEPARATOR } from './commitlintGitHubConstants';
 
 const parseIssues = (issuesString: string): number[] => {
   // TODO: Implement
   return [0];
 };
 
-const parseCommitMessage: CommitParser = (
-  rawCommitMessage: string,
-): ParsedCommitMessage => {
+const parseCommitMessage: CommitParser = (rawCommitMessage: string): ParsedCommitMessage => {
   let issueNumbers: number[] = [];
   let type: string | undefined;
   let isWip = false;
   let subject: string | undefined;
   let body: string[] = [];
 
-  const issueNumbersWithPossibleType = ISSUE_NUMBERS_PATTERN.exec(
-    rawCommitMessage,
-  );
-
-  const issueNumbersWithPossibleTypeGroups =
-    issueNumbersWithPossibleType && issueNumbersWithPossibleType.groups;
+  const issueNumbersWithPossibleType = ISSUE_NUMBERS_PATTERN.exec(rawCommitMessage);
+  const issueNumbersWithPossibleTypeGroups = issueNumbersWithPossibleType && issueNumbersWithPossibleType.groups;
 
   if (issueNumbersWithPossibleTypeGroups) {
     issueNumbers = parseIssues(issueNumbersWithPossibleTypeGroups.issue);
@@ -32,9 +23,7 @@ const parseCommitMessage: CommitParser = (
     type = issueNumbersWithPossibleTypeGroups.type;
     isWip = type === 'WIP';
 
-    const descriptionLines = issueNumbersWithPossibleTypeGroups.description.split(
-      COMMIT_DESCRIPTION_SEPARATOR,
-    );
+    const descriptionLines = issueNumbersWithPossibleTypeGroups.description.split(COMMIT_DESCRIPTION_SEPARATOR);
 
     const [description] = descriptionLines;
     [subject] = description;
