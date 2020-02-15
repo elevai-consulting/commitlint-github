@@ -62,6 +62,65 @@ describe('commitlintPluginGitHubTests', () => {
     expect(
       parseCommitMessage(`(#123,#45) WIP: ${COMMIT_MESSAGE}`).issueNumbers
     ).toEqual([123, 45]);
+
+    // Other issue numbers referenced later should not be included
+    expect(
+      parseCommitMessage(`(#123,#45) ${COMMIT_MESSAGE} (#22)`).issueNumbers
+    ).toEqual([123, 45]);
+
+    expect(
+      parseCommitMessage(`(#123,#45) WIP: ${COMMIT_MESSAGE} (#22)`).issueNumbers
+    ).toEqual([123, 45]);
+
+    // Issue Numbers string should be trimmed
+    expect(
+      parseCommitMessage(`( #123,#45 ) WIP: ${COMMIT_MESSAGE} (#22)`).issueNumbers
+    ).toEqual([123, 45]);
+  });
+
+  it('should return raw issue numbers', () => {
+    // Non-numeric issue numbers prefix
+    expect(
+      parseCommitMessage(`(#2bob) ${COMMIT_MESSAGE}`).rawIssueNumbers
+    ).toEqual('#2bob');
+
+    expect(
+      parseCommitMessage(`(#2, #1bob) ${COMMIT_MESSAGE}`).rawIssueNumbers
+    ).toEqual('#2, #1bob');
+
+    expect(
+      parseCommitMessage(`(#2,#1bob) ${COMMIT_MESSAGE}`).rawIssueNumbers
+    ).toEqual('#2,#1bob');
+
+    expect(
+      parseCommitMessage(`(#123,#45) WIP: ${COMMIT_MESSAGE} (#22)`).rawIssueNumbers
+    ).toEqual('#123,#45');
+
+    // Issue Numbers string should be trimmed
+    expect(
+      parseCommitMessage(`( #123,#45 ) ${COMMIT_MESSAGE}`).rawIssueNumbers
+    ).toEqual('#123,#45');
+  });
+
+  it('should return no raw issue numbers', () => {
+    expect(
+      parseCommitMessage('My commit message').rawIssueNumbers
+    ).toEqual(null);
+
+    // Issue numbers not at the beginning
+    expect(
+      parseCommitMessage('My commit message (#1)').rawIssueNumbers
+    ).toEqual(null);
+
+    // Empty brackets should return an empty String (not null)
+    expect(
+      parseCommitMessage(`() ${COMMIT_MESSAGE}`).rawIssueNumbers
+    ).toEqual('');
+
+    // Raw Issue Numbers string should be trimmed
+    expect(
+      parseCommitMessage(`( ) ${COMMIT_MESSAGE}`).rawIssueNumbers
+    ).toEqual('');
   });
 
   it('should return no issue numbers', () => {
@@ -70,9 +129,18 @@ describe('commitlintPluginGitHubTests', () => {
       parseCommitMessage('My commit message').issueNumbers
     ).toEqual([]);
 
-    // Empty issue numbers prefix
+    // Issue numbers not at the beginning
     expect(
       parseCommitMessage(`() ${COMMIT_MESSAGE}`).issueNumbers
+    ).toEqual([]);
+
+    expect(
+      parseCommitMessage(`WIP: ${COMMIT_MESSAGE} (#22)`).issueNumbers
+    ).toEqual([]);
+
+     // Empty issue numbers prefix
+     expect(
+      parseCommitMessage(`${COMMIT_MESSAGE} (#1)`).issueNumbers
     ).toEqual([]);
 
     // WIP commit without issue numbers
