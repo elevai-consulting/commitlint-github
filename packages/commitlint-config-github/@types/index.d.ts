@@ -1,8 +1,8 @@
 export interface CommitlintConfigGitHub {
   rules: {
-    [key: string]: number | (number | string)[]
-  }
+    [key: string]: number | (number | string)[];
+  };
 }
-declare const commitlintConfigGitHub: CommitlintConfigGitHub
+declare const commitlintConfigGitHub: CommitlintConfigGitHub;
 
-export default commitlintConfigGitHub
+export default commitlintConfigGitHub;

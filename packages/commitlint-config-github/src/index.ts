@@ -1,27 +1,13 @@
-import { commitlintGitHubConstants } from 'commitlint-github-utils'
-import { CommitlintConfigGitHub } from '../@types'
+import { commitlintGitHubConstants } from 'commitlint-github-utils';
+import { CommitlintConfigGitHub } from '../@types';
 
 export const commitlintConfigGitHub: CommitlintConfigGitHub = {
   rules: {
-    [commitlintGitHubConstants.GITHUB_RULES.taskIdEmpty]: [2, 'always'],
-    [commitlintGitHubConstants.GITHUB_RULES.taskIdMinLength]: [2, 'always', 3],
-    [commitlintGitHubConstants.GITHUB_RULES.taskIdMaxLength]: [2, 'always', 9],
-    [commitlintGitHubConstants.GITHUB_RULES.taskIdSeparator]: [
-      2,
-      'always',
-      commitlintGitHubConstants.TASK_ID_SEPARATOR,
-    ],
-    [commitlintGitHubConstants.GITHUB_RULES.taskIdCase]: [
-      2,
-      'always',
-      commitlintGitHubConstants.UPPERCASE,
-    ],
-    [commitlintGitHubConstants.GITHUB_RULES.commitMessageSeparator]: [
-      2,
-      'always',
-      commitlintGitHubConstants.COMMIT_MESSAGE_SEPARATOR,
-    ],
+    [commitlintGitHubConstants.GITHUB_RULES.issueNumberMissing]: [2, 'always'],
+    [commitlintGitHubConstants.GITHUB_RULES.issueNumberFormat]: [2, 'always'],
+    [commitlintGitHubConstants.GITHUB_RULES.typeOrWip]: [2, 'always', 9],
+    [commitlintGitHubConstants.GITHUB_RULES.subjectCase]: [2, 'always', 'sentence-case'],
   },
-}
+};
 
-export default commitlintConfigGitHub
+export default commitlintConfigGitHub;
