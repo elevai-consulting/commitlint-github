@@ -1,9 +1,28 @@
 import { CommitParser, ParsedCommitMessage } from '../@types';
-import { ISSUE_NUMBERS_PATTERN, COMMIT_DESCRIPTION_SEPARATOR } from './commitlintGitHubConstants';
+import {
+  ISSUE_NUMBERS_PATTERN,
+  WIP_WITHOUT_ISSUE_NUMBER_PATTERN,
+  WIP_TYPE,
+  COMMIT_DESCRIPTION_SEPARATOR,
+} from './commitlintGitHubConstants';
+
+const parseCommit = (rawCommitMessage: string, regex: RegExp): { [key: string]: string } | undefined => {
+  return regex.exec(rawCommitMessage)?.groups;
+};
 
 const parseIssues = (issuesString: string): number[] => {
   // TODO: Implement
   return [0];
+};
+
+const parseDescription = (groups: { [key: string]: string }): [string, string[]] => {
+  const descriptionLines = groups.description.split(COMMIT_DESCRIPTION_SEPARATOR);
+
+  const [description] = descriptionLines;
+  const [subject] = description;
+  const body = descriptionLines.slice(1);
+
+  return [subject, body];
 };
 
 const parseCommitMessage: CommitParser = (rawCommitMessage: string): ParsedCommitMessage => {
@@ -13,21 +32,23 @@ const parseCommitMessage: CommitParser = (rawCommitMessage: string): ParsedCommi
   let subject: string | undefined;
   let body: string[] = [];
 
-  const issueNumbersWithPossibleType = ISSUE_NUMBERS_PATTERN.exec(rawCommitMessage);
-  const issueNumbersWithPossibleTypeGroups = issueNumbersWithPossibleType && issueNumbersWithPossibleType.groups;
-
+  const issueNumbersWithPossibleTypeGroups = parseCommit(rawCommitMessage, ISSUE_NUMBERS_PATTERN);
   if (issueNumbersWithPossibleTypeGroups) {
     issueNumbers = parseIssues(issueNumbersWithPossibleTypeGroups.issue);
 
     // eslint-disable-next-line prefer-destructuring
     type = issueNumbersWithPossibleTypeGroups.type;
-    isWip = type === 'WIP';
+    isWip = type === WIP_TYPE;
 
-    const descriptionLines = issueNumbersWithPossibleTypeGroups.description.split(COMMIT_DESCRIPTION_SEPARATOR);
+    [subject, body] = parseDescription(issueNumbersWithPossibleTypeGroups);
+  } else {
+    const wipCommitGroups = parseCommit(rawCommitMessage, WIP_WITHOUT_ISSUE_NUMBER_PATTERN);
+    if (wipCommitGroups) {
+      isWip = true;
+      type = WIP_TYPE;
 
-    const [description] = descriptionLines;
-    [subject] = description;
-    body = descriptionLines.slice(1);
+      [subject, body] = parseDescription(wipCommitGroups);
+    }
   }
 
   return {
