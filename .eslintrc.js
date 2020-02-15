@@ -28,6 +28,13 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': ['error', prettierOptions],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        "ts": "never"
+      }
+   ]
   },
   settings: {
     'import/resolver': {
