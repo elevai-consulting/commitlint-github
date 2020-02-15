@@ -22,9 +22,7 @@ export type ParsedCommitMessage = {
   body: string[];
 };
 
-export type CommitParser = (
-  unparsedCommitMessage: string,
-) => ParsedCommitMessage;
+export type CommitParser = (unparsedCommitMessage: string) => ParsedCommitMessage;
 
 export interface CommitlintGitHubUtils {
   parseCommitMessage: CommitParser;
