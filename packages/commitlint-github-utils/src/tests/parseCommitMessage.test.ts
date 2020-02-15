@@ -1,19 +1,25 @@
 import parseCommitMessage from '../parseCommitMessage'
 
+const COMMIT_MESSAGE = 'Test commit message'
+
 describe('commitlintPluginGitHubTests', () => {
   const testCommitMessages = {
-    singleScope: 'IB-2121: test commit message',
-    multyScope: 'IB-2121, IB-21: test commit message',
-    // singleScopeWipTask: '[WIP]IB-2121: test commit message',
-    // multyScopeWipTask: '[WIP]IB-2121, IB-21: test commit message',
-    emptyTaskIds: ': my commit message',
-    missingSeparator: 'IB-21 My commit message',
-    // test data for this issue: https://github.com/Gherciu/commitlint-github/issues/7
-    multyCommitPartsSeparator:
-      'IB-2121: test commit message http://gherciu.github.io',
-    // test data for issue: https://github.com/Gherciu/commitlint-github/issues/6
-    multyLineCommit: `
-      IB-2121: test commit message
+    singleScope: `(#1) ${COMMIT_MESSAGE}`,
+    singleScopeMultipleDigits: `(#1234) ${COMMIT_MESSAGE}`,
+    multiScope: `(#1, #2) ${COMMIT_MESSAGE}`,
+    multiScopeMultipleDigits: `(#1, #34) ${COMMIT_MESSAGE}`,
+    singleScopeTypedTask: `(#123) chore: ${COMMIT_MESSAGE}`,
+    multiScopeTypedTask: `(#123, #45) chore: ${COMMIT_MESSAGE}`,
+    singleScopeWipTask: `(#123) WIP: ${COMMIT_MESSAGE}`,
+    multiScopeWipTask: `(#123, #45) WIP: ${COMMIT_MESSAGE}`,
+    issueNumberMissing: 'My commit message',
+    issueNumberEmpty: '() My commit message',
+    issueNumberMissingHash: '(123) My commit message',
+    issueNumberNonNumeric: '(#bob) My commit message',
+    multiCommitPartsSeparator: `(#42) ${COMMIT_MESSAGE} http://gherciu.github.io`,
+    multiLineCommit: `
+      (#123) ${COMMIT_MESSAGE}
+
       My commit message description
         - SUBTASK-1: I added a new feature
         * SUBTASK-2: I fixed a issue
@@ -28,10 +34,10 @@ describe('commitlintPluginGitHubTests', () => {
     //   parseCommitMessage(testCommitMessages.singleScopeWipTask).commitTaskIds,
     // ).toEqual(['IB-2121'])
     expect(
-      parseCommitMessage(testCommitMessages.multyScope).commitTaskIds,
+      parseCommitMessage(testCommitMessages.multiScope).commitTaskIds,
     ).toEqual(['IB-2121', 'IB-21'])
     // expect(
-    //   parseCommitMessage(testCommitMessages.multyScopeWipTask).commitTaskIds,
+    //   parseCommitMessage(testCommitMessages.multiScopeWipTask).commitTaskIds,
     // ).toEqual(['IB-2121', 'IB-21'])
   })
 
@@ -52,21 +58,21 @@ describe('commitlintPluginGitHubTests', () => {
 
   it('should return corect taskIds and commit footer if a url is added in commit message', () => {
     expect(
-      parseCommitMessage(testCommitMessages.multyCommitPartsSeparator)
+      parseCommitMessage(testCommitMessages.multiCommitPartsSeparator)
         .commitTaskIds,
     ).toEqual(['IB-2121'])
     expect(
-      parseCommitMessage(testCommitMessages.multyCommitPartsSeparator)
+      parseCommitMessage(testCommitMessages.multiCommitPartsSeparator)
         .commitFooter,
     ).toEqual('test commit message http://gherciu.github.io')
   })
 
   it('should return corect taskIds and commit footer if is provided a multiline commit message used for description', () => {
     expect(
-      parseCommitMessage(testCommitMessages.multyLineCommit).commitTaskIds,
+      parseCommitMessage(testCommitMessages.multiLineCommit).commitTaskIds,
     ).toEqual(['IB-2121'])
     expect(
-      parseCommitMessage(testCommitMessages.multyLineCommit).commitFooter,
+      parseCommitMessage(testCommitMessages.multiLineCommit).commitFooter,
     ).toEqual('test commit message')
   })
 })
