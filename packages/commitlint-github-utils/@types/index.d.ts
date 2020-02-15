@@ -5,7 +5,7 @@ export interface Rules {
   subjectCase: string;
 }
 
-export interface TCommitlintGitHubConstants {
+export interface CommitlintGitHubConstants {
   GITHUB_RULES: Rules;
   ISSUE_NUMBER_PREFIX: string;
   ISSUE_NUMBERS_SEPARATOR: string;
@@ -13,6 +13,16 @@ export interface TCommitlintGitHubConstants {
   TYPE_SEPARATOR: string;
   COMMIT_DESCRIPTION_SEPARATOR: string;
 }
+
+export enum BracketType {
+  PARENTHESES,
+  SQUARE_BRACKETS,
+  ANGLE_BRACKETS,
+}
+
+export type ParserOptions = {
+  issueBrackets: BracketType;
+};
 
 export type ParsedCommitMessage = {
   issueNumbers: number[];
@@ -22,14 +32,14 @@ export type ParsedCommitMessage = {
   body: string[];
 };
 
-export type CommitParser = (unparsedCommitMessage: string) => ParsedCommitMessage;
+export type CommitParser = (unparsedCommitMessage: string, parserOptions?: ParserOptions) => ParsedCommitMessage;
 
 export interface CommitlintGitHubUtils {
   parseCommitMessage: CommitParser;
-  commitlintGitHubConstants: TCommitlintGitHubConstants;
+  commitlintGitHubConstants: CommitlintGitHubConstants;
 }
 
-export const commitlintGitHubConstants: TCommitlintGitHubConstants;
+export const commitlintGitHubConstants: CommitlintGitHubConstants;
 export const parseCommitMessage: CommitParser;
 
 declare const commitlintGitHubUtils: CommitlintGitHubUtils;

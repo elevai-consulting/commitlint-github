@@ -1,4 +1,4 @@
-import { CommitParser, ParsedCommitMessage } from '../@types';
+import { CommitParser, ParserOptions, ParsedCommitMessage } from '../@types';
 import {
   ISSUE_NUMBERS_PATTERN,
   WIP_WITHOUT_ISSUE_NUMBER_PATTERN,
