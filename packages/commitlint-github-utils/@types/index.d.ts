@@ -1,37 +1,38 @@
 export interface Rules {
-  taskIdEmpty: string
-  taskIdSeparator: string
-  taskIdCase: string
-  taskIdMaxLength: string
-  taskIdMinLength: string
-  commitMessageSeparator: string
+  issueNumberMissing: string;
+  issueNumberFormat: string;
+  typeOrWip: string;
+  subjectCase: string;
 }
 
 export interface TCommitlintGitHubConstants {
-  GITHUB_RULES: Rules
-  COMMIT_MESSAGE_SEPARATOR: string
-  COMMIT_TASK_IDS_SEPARATOR: string
-  TASK_ID_SEPARATOR: string
-  UPPERCASE: string
-  LOWERCASE: string
-  COMMIT_DESCRIPTION_SEPARATOR: string
+  GITHUB_RULES: Rules;
+  ISSUE_NUMBER_PREFIX: string;
+  ISSUE_NUMBERS_SEPARATOR: string;
+  ISSUE_NUMBERS_PATTERN: RegExp;
+  TYPE_SEPARATOR: string;
+  COMMIT_DESCRIPTION_SEPARATOR: string;
 }
 
-export type TParseCommitMessage = (
-  commitMessage: string,
-) => {
-  commitTaskIds: string[]
-  commitHeader: string
-  commitFooter: string
-}
+export type ParsedCommitMessage = {
+  issueNumbers: number[];
+  isWip: boolean;
+  type?: string;
+  subject?: string;
+  body: string[];
+};
+
+export type CommitParser = (
+  unparsedCommitMessage: string,
+) => ParsedCommitMessage;
 
 export interface CommitlintGitHubUtils {
-  parseCommitMessage: TParseCommitMessage
-  commitlintGitHubConstants: TCommitlintGitHubConstants
+  parseCommitMessage: CommitParser;
+  commitlintGitHubConstants: TCommitlintGitHubConstants;
 }
 
-export const commitlintGitHubConstants: TCommitlintGitHubConstants
-export const parseCommitMessage: TParseCommitMessage
+export const commitlintGitHubConstants: TCommitlintGitHubConstants;
+export const parseCommitMessage: CommitParser;
 
-declare const commitlintGitHubUtils: CommitlintGitHubUtils
-export default commitlintGitHubUtils
+declare const commitlintGitHubUtils: CommitlintGitHubUtils;
+export default commitlintGitHubUtils;

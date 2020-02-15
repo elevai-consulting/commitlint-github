@@ -1,54 +1,53 @@
-import { TParseCommitMessage } from '../@types'
+import { CommitParser, ParsedCommitMessage } from '../@types';
 import {
-  COMMIT_MESSAGE_SEPARATOR,
-  COMMIT_TASK_IDS_SEPARATOR,
+  ISSUE_NUMBERS_PATTERN,
   COMMIT_DESCRIPTION_SEPARATOR,
-} from './commitlintGitHubConstants'
+} from './commitlintGitHubConstants';
 
-const parseCommitMessage: TParseCommitMessage = rawCommitMessage => {
-  /**
-   * Description separator is used to separe commit parts without description
-   * Read more about this issue: https://github.com/Gherciu/commitlint-github/issues/6
-   */
-  const commitMessage = rawCommitMessage
-    .split(COMMIT_DESCRIPTION_SEPARATOR)
-    .filter(commitMessageSeparatedPart => commitMessageSeparatedPart)[0]
-  const commitMessageParts = commitMessage.split(COMMIT_MESSAGE_SEPARATOR)
+const parseIssues = (issuesString: string): number[] => {
+  // TODO: Implement
+  return [0];
+};
 
-  /**
-   * if commit parts length is greater or equal with 2 return part one else
-   * commit parts length is less than 2 it means that task ids is not provided
-   * or is not separated corectly
-   */
-  const rawCommitHeader =
-    commitMessageParts.length >= 2 ? commitMessageParts[0] : ''
-  const commitHeader = rawCommitHeader.trim()
-  /**
-   * if commit parts length is greater than 2 return all parts without first part
-   * because first part is commit header
-   * Note: rest of parts should be joined with COMMIT_MESSAGE_SEPARATOR
-   *  because is posible that the commit message footer to contain symbols equal
-   *  with  COMMIT_MESSAGE_SEPARATOR then the commit footer will be resolved incorect
-   * More info about this issue: https://github.com/Gherciu/commitlint-github/issues/7
-   */
-  const commitFooter =
-    commitMessageParts.length > 2
-      ? commitMessageParts
-          .filter((_value, index) => index > 0)
-          .join(COMMIT_MESSAGE_SEPARATOR)
-          .trim()
-      : commitMessageParts[commitMessageParts.length - 1].trim()
+const parseCommitMessage: CommitParser = (
+  rawCommitMessage: string,
+): ParsedCommitMessage => {
+  let issueNumbers: number[] = [];
+  let type: string | undefined;
+  let isWip = false;
+  let subject: string | undefined;
+  let body: string[] = [];
 
-  const commitTaskIds = commitHeader
-    .split(COMMIT_TASK_IDS_SEPARATOR)
-    .map(taskId => taskId.trim())
-    .filter(taskId => taskId)
+  const issueNumbersWithPossibleType = ISSUE_NUMBERS_PATTERN.exec(
+    rawCommitMessage,
+  );
+
+  const issueNumbersWithPossibleTypeGroups =
+    issueNumbersWithPossibleType && issueNumbersWithPossibleType.groups;
+
+  if (issueNumbersWithPossibleTypeGroups) {
+    issueNumbers = parseIssues(issueNumbersWithPossibleTypeGroups.issue);
+
+    // eslint-disable-next-line prefer-destructuring
+    type = issueNumbersWithPossibleTypeGroups.type;
+    isWip = type === 'WIP';
+
+    const descriptionLines = issueNumbersWithPossibleTypeGroups.description.split(
+      COMMIT_DESCRIPTION_SEPARATOR,
+    );
+
+    const [description] = descriptionLines;
+    [subject] = description;
+    body = descriptionLines.slice(1);
+  }
 
   return {
-    commitTaskIds,
-    commitFooter,
-    commitHeader,
-  }
-}
+    issueNumbers,
+    isWip,
+    type,
+    subject,
+    body,
+  };
+};
 
-export default parseCommitMessage
+export default parseCommitMessage;
