@@ -75,6 +75,11 @@ describe('commitlintPluginGitHubTests', () => {
       parseCommitMessage(`() ${COMMIT_MESSAGE}`).issueNumbers
     ).toEqual([]);
 
+    // WIP commit without issue numbers
+    expect(
+      parseCommitMessage(`WIP: ${COMMIT_MESSAGE}`).issueNumbers
+    ).toEqual([]);
+
     // Non-numeric issue numbers prefix
     expect(
       parseCommitMessage(`(#2bob) ${COMMIT_MESSAGE}`).issueNumbers
@@ -170,6 +175,10 @@ describe('commitlintPluginGitHubTests', () => {
     expect(
       parseCommitMessage(`(#123,#45) WIP: ${COMMIT_MESSAGE}`).type
     ).toEqual('WIP');
+
+    expect(
+      parseCommitMessage(`WIP: ${COMMIT_MESSAGE}`).type
+    ).toEqual('WIP');
   });
 
   it('should return correct WIP status', () => {
@@ -221,6 +230,11 @@ describe('commitlintPluginGitHubTests', () => {
     expect(
       parseCommitMessage(`(#123) WiP: ${COMMIT_MESSAGE}`).isWip
     ).toEqual(false);
+
+    // WIP commits are the exception in that the parser will support not including issue numbers
+    expect(
+      parseCommitMessage(`WIP: ${COMMIT_MESSAGE}`).isWip
+    ).toEqual(true);
   });
 
   it('should return correct subject', () => {
@@ -270,6 +284,10 @@ describe('commitlintPluginGitHubTests', () => {
 
     expect(
       parseCommitMessage(`(#123,#45) WIP: ${COMMIT_MESSAGE}`).subject
+    ).toEqual(COMMIT_MESSAGE);
+
+    expect(
+      parseCommitMessage(`WIP: ${COMMIT_MESSAGE}`).subject
     ).toEqual(COMMIT_MESSAGE);
   });
 });
