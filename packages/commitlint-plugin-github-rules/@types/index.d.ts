@@ -1,27 +1,30 @@
-export type TRuleResolver = (
+export type RuleResolverResult = [boolean, string?];
+
+export type RuleResolver<T> = (
   parsed: Partial<{
-    type: string
-    scope: string
-    subject: string
-    merge: string
-    header: string
-    body: string
-    footer: string
-    notes: string[]
-    references: string[]
-    mentions: string[]
-    revert: string
-    raw: string
+    type: string;
+    scope: string;
+    subject: string;
+    merge: string;
+    header: string;
+    body: string;
+    footer: string;
+    notes: string[];
+    references: string[];
+    mentions: string[];
+    revert: string;
+    raw: string;
   }>,
   when?: string,
-  value?: string | number | (string | number)[],
-) => (string | boolean)[]
+  value?: T,
+) => RuleResolverResult;
 
 export interface CommitlintPluginGitHub {
   rules: {
-    [key: string]: TRuleResolver
-  }
+    [key: string]: unknown;
+  };
 }
-declare const commitlintPluginGitHub: CommitlintPluginGitHub
 
-export default commitlintPluginGitHub
+declare const commitlintPluginGitHub: CommitlintPluginGitHub;
+
+export default commitlintPluginGitHub;
