@@ -1,8 +1,6 @@
 export interface Rules {
   issueNumberMissing: string;
   issueNumberFormat: string;
-  typeOrWip: string;
-  subjectCase: string;
 }
 
 export interface CommitlintGitHubConstants {
