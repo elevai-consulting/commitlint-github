@@ -1,12 +1,12 @@
 {
   "name": "commitlint-github",
-  "description": "✔️❌ Shareable commitlint config enforcing GitHub commits messages style",
-  "version": "1.0.0",
+  "description": "✔️❌ Shareable commitlint config enforcing prefixing each commit with associated GitHub Issue(s)",
+  "version": "0.1.0",
   "license": "MIT",
   "author": {
-    "name": "Gherciu Gheorghe",
-    "email": "gherciu553@gmail.com",
-    "url": "https://gherciu.github.io/"
+    "name": "Elevai Consulting",
+    "email": "account@elevai.com",
+    "url": "https://www.elevai.com"
   },
   "keywords": [
     "commitlint",
@@ -17,10 +17,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Gherciu/commitlint-github"
+    "url": "https://github.com/elevai-consulting/commitlint-github"
   },
   "bugs": {
-    "url": "https://github.com/Gherciu/commitlint-github/issues"
+    "url": "https://github.com/elevai-consulting/commitlint-github/issues"
   },
   "scripts": {
     "clean": "rm -rf node_modules",
