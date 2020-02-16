@@ -1,12 +1,12 @@
 {
   "name": "commitlint-config-github",
   "description": "A recomended config who contain preconfigured rules for github commits messages style",
-  "version": "1.3.0",
+  "version": "0.1.0",
   "license": "MIT",
   "author": {
-    "name": "Gherciu Gheorghe",
-    "email": "gherciu553@gmail.com",
-    "url": "https://gherciu.github.io/"
+    "name": "Elevai Consulting",
+    "email": "account@elevai.com",
+    "url": "https://www.elevai.com"
   },
   "keywords": [
     "commitlint",
@@ -18,10 +18,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Gherciu/commitlint-github"
+    "url": "https://github.com/elevai-consulting/commitlint-github"
   },
   "bugs": {
-    "url": "https://github.com/Gherciu/commitlint-github/issues"
+    "url": "https://github.com/elevai-consulting/commitlint-github/issues"
   },
   "main": "./build/index.js",
   "types": "./@types",
@@ -38,7 +38,6 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "commitlint-github-utils": "^1.3.0"
-  },
-  "gitHead": "7f76615b342be1a91e2350158577141fca95a953"
+    "commitlint-github-utils": "^0.1.0"
+  }
 }
