@@ -23,7 +23,7 @@
     "url": "https://github.com/elevai-consulting/commitlint-github/issues"
   },
   "scripts": {
-    "clean": "rm -rf node_modules",
+    "clean": "lerna clean --yes; rm -rf node_modules",
     "build:packages": "lerna run build",
     "clean:packages": "lerna clean --yes",
     "watch:packages": "lerna run watch",
