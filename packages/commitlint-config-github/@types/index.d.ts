@@ -1,6 +1,8 @@
+type RuleConfig = [number, string?, (boolean | number | string | string[])?];
+
 export interface CommitlintConfigGitHub {
   rules: {
-    [key: string]: number | (number | string | boolean)[];
+    [key: string]: RuleConfig;
   };
 }
 declare const commitlintConfigGitHub: CommitlintConfigGitHub;
