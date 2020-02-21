@@ -1,11 +1,16 @@
-import { parseCommitMessage } from 'commitlint-github-utils';
-import { RuleResolver } from '../../@types';
+import utils from 'commitlint-github-utils';
+import { RuleResolver } from '../../../@types';
 
 const githubIssueNumberFormatRuleResolver: RuleResolver<void> = parsed => {
   const rawCommitMessage = parsed.raw;
   if (!rawCommitMessage) return [false, 'Commit message should not be empty'];
 
-  const commitMessage = parseCommitMessage(rawCommitMessage);
+  const commitMessage = utils.parseCommitMessage(rawCommitMessage);
+
+  // We short circuit and return true for WIP commits since we don't valdiate those
+  if (commitMessage.isWip) {
+    return [true];
+  }
 
   const issueNumbersValid = commitMessage.rawIssueNumbers == null || commitMessage.issueNumbers.length > 0;
 

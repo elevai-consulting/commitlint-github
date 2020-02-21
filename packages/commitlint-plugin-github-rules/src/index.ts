@@ -1,12 +1,17 @@
-import { commitlintGitHubConstants } from 'commitlint-github-utils';
+import utils from 'commitlint-github-utils';
 import { CommitlintPluginGitHub } from '../@types';
-import githubIssueNumberMissingRuleResolver from './rules/githubIssueNumberMissingRuleResolver';
-import githubIssueNumberFormatRuleResolver from './rules/githubIssueNumberFormatRuleResolver';
+
+import githubIssueNumberMissingRuleResolver from './rules/githubIssueNumbers/isMissing';
+import githubIssueNumberFormatRuleResolver from './rules/githubIssueNumbers/isCorrectFormat';
+import githubIssueNumberDuplicateRuleResolver from './rules/githubIssueNumbers/isDuplicate';
+
+const commitlintGitHubRules = utils.commitlintGitHubConstants.GITHUB_RULES;
 
 export const commitlintPluginGitHub: CommitlintPluginGitHub = {
   rules: {
-    [commitlintGitHubConstants.GITHUB_RULES.issueNumberMissing]: githubIssueNumberMissingRuleResolver,
-    [commitlintGitHubConstants.GITHUB_RULES.issueNumberFormat]: githubIssueNumberFormatRuleResolver,
+    [commitlintGitHubRules.issueNumberMissing]: githubIssueNumberMissingRuleResolver,
+    [commitlintGitHubRules.issueNumberFormat]: githubIssueNumberFormatRuleResolver,
+    [commitlintGitHubRules.issueNumberDuplicate]: githubIssueNumberDuplicateRuleResolver,
   },
 };
 
