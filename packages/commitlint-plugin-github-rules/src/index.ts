@@ -5,6 +5,8 @@ import githubIssueNumberMissingRuleResolver from './rules/githubIssueNumbers/isM
 import githubIssueNumberFormatRuleResolver from './rules/githubIssueNumbers/isCorrectFormat';
 import githubIssueNumberDuplicateRuleResolver from './rules/githubIssueNumbers/isDuplicate';
 
+import wipAllowedRuleResolver from './rules/wip/isWipAllowed';
+
 import {
   subjectEmptyRuleResolver,
   subjectCaseRuleResolver,
@@ -29,6 +31,8 @@ export const commitlintPluginGitHub: CommitlintPluginGitHub = {
     [commitlintGitHubRules.issueNumberMissing]: githubIssueNumberMissingRuleResolver,
     [commitlintGitHubRules.issueNumberFormat]: githubIssueNumberFormatRuleResolver,
     [commitlintGitHubRules.issueNumberDuplicate]: githubIssueNumberDuplicateRuleResolver,
+
+    [commitlintGitHubRules.wipAllowed]: wipAllowedRuleResolver,
 
     [commitlintGitHubRules.subjectEmpty]: subjectEmptyRuleResolver,
     [commitlintGitHubRules.subjectCase]: subjectCaseRuleResolver,
