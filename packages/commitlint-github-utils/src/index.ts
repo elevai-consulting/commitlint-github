@@ -1,11 +1,15 @@
+import { CommitlintGitHubUtils, When } from '../@types';
 import * as commitlintGitHubConstants from './commitlintGitHubConstants';
 import parseCommitMessage from './parseCommitMessage';
-import { CommitlintGitHubUtils } from '../@types';
+import handleWipCommits from './handleWipCommits';
+
+const isNegated = (when?: When): boolean => when === When.NEVER;
 
 const commitlintGitHubUtils: CommitlintGitHubUtils = {
   commitlintGitHubConstants,
   parseCommitMessage,
+  isNegated,
+  handleWipCommits,
 };
 
-export { commitlintGitHubConstants, parseCommitMessage };
 export default commitlintGitHubUtils;
