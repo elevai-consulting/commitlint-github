@@ -34,12 +34,26 @@
     "lint:packages": "eslint ./packages --ext .ts --max-warnings=0",
     "fix:packages": "eslint ./packages --ext .ts --fix --max-warnings=0"
   },
+  "lint-staged": {
+    "*.{ts}": [
+      "npm run lint:packages"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/jest": "^25.1.0",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
+    "commitlint-config-github": "file:./packages/commitlint-config-github",
+    "commitlint-github-utils": "file:./packages/commitlint-github-utils",
+    "commitlint-plugin-github": "file:./packages/commitlint-plugin-github",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",

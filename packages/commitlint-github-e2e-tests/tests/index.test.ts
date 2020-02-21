@@ -2,9 +2,7 @@
 import * as shell from 'shelljs';
 
 describe('commitlintPluginGitHubTests', () => {
-  const testCommitMessages = {
-    singleScope: 'IB-2121: test commit message',
-  };
+  const STANDARD_COMMIT_MESSAGE = '(#1) Test commit message.';
 
   it('should load with success provided commitlint config', () => {
     let cliOutput = {
@@ -12,7 +10,7 @@ describe('commitlintPluginGitHubTests', () => {
       code: 0,
     };
     try {
-      cliOutput = shell.exec(`echo "${testCommitMessages.singleScope}" | npx commitlint"`);
+      cliOutput = shell.exec(`echo "${STANDARD_COMMIT_MESSAGE}" | npx commitlint`);
     } catch (error) {
       cliOutput = {
         stderr: error,

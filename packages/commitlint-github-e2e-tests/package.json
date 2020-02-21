@@ -10,7 +10,8 @@
     "typescript": "^3.8.2"
   },
   "dependencies": {
-    "commitlint-plugin-github-rules": "^0.1.0",
-    "commitlint-config-github": "^0.1.0"
+    "commitlint-config-github": "file:../commitlint-config-github",
+    "commitlint-github-utils": "file:../commitlint-github-utils",
+    "commitlint-plugin-github-rules": "file:../commitlint-plugin-github-rules"
   }
 }
