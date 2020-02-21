@@ -52,6 +52,8 @@ export const enum When {
   ALWAYS = 'always',
   NEVER = 'never',
   IGNORED = 'ignored', // For when the rule doesn't vary based on the 'when' value passed in
+  NON_WIPS_ALWAYS = 'always-in-non-wips',
+  NON_WIPS_NEVER = 'never-in-non-wips',
 }
 
 // TODO: Remove once @commitlint/types is published

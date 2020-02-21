@@ -9,11 +9,6 @@ const githubIssueNumberDuplicateRuleResolver: RuleResolver<void> = parsed => {
 
   const commitMessage = utils.parseCommitMessage(rawCommitMessage);
 
-  // We short circuit and return true for WIP commits since we don't valdiate those
-  if (commitMessage.isWip) {
-    return [true];
-  }
-
   const issueNumbersValid = commitMessage.rawIssueNumbers == null || isNoDuplicates(commitMessage.issueNumbers);
 
   return [issueNumbersValid, 'the commit message duplicate issue numbers referenced in the commit message prefix.'];

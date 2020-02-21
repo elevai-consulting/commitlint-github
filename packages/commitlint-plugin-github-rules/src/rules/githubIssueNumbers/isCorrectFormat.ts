@@ -7,11 +7,6 @@ const githubIssueNumberFormatRuleResolver: RuleResolver<void> = parsed => {
 
   const commitMessage = utils.parseCommitMessage(rawCommitMessage);
 
-  // We short circuit and return true for WIP commits since we don't valdiate those
-  if (commitMessage.isWip) {
-    return [true];
-  }
-
   const issueNumbersValid = commitMessage.rawIssueNumbers == null || commitMessage.issueNumbers.length > 0;
 
   return [

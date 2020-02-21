@@ -26,7 +26,7 @@ const EXPECTED_VALUE = 'dummy-value';
 function validateDelegateRuleResolver(
   delegateRuleName: string,
   typeRuleResolver: RuleResolver<any>,
-  expectedWhen: When,
+  whenPassedIn: When,
 ): void {
   // Given that the standard type rule exists
   const delegate = baseRules[delegateRuleName];
@@ -41,10 +41,14 @@ function validateDelegateRuleResolver(
   mockedResolveRuleUsingBaseResolver.mockReturnValue(mockResult);
 
   // When we call the type rule under test
-  const result = typeRuleResolver(EXPECTED_PARSED, expectedWhen, EXPECTED_VALUE);
+  const result = typeRuleResolver(EXPECTED_PARSED, whenPassedIn, EXPECTED_VALUE);
 
   // Then we expect the mock response from the base rule resolving function to be returned
   expect(result).toEqual(mockResult);
+
+  // And we convert the When clause to the corresponding NON_WIPS equivalent to allow for WIP short-circuiting
+  // See comment in the typeRuleResolver() method in typeRuleResolvers.helpers.ts for why the when clause gets converted
+  const expectedWhen = whenPassedIn === When.NEVER ? When.NON_WIPS_NEVER : When.NON_WIPS_ALWAYS;
 
   // And we expect the base rule resolving function with the correct arguments, including the converted when
   expect(mockedResolveRuleUsingBaseResolver).toHaveBeenCalledWith(

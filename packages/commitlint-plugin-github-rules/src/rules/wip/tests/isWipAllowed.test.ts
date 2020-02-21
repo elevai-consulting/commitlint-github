@@ -11,6 +11,8 @@ describe('wipAllowedRuleResolver', () => {
   it('should always return an error response if an empty commit message is provided', () => {
     expect(parse(When.ALWAYS, '')[0]).toEqual(false);
     expect(parse(When.NEVER, '')[0]).toEqual(false);
+    expect(parse(When.NON_WIPS_ALWAYS, '')[0]).toEqual(false);
+    expect(parse(When.NON_WIPS_NEVER, '')[0]).toEqual(false);
   });
 
   it('should return a success response if the commit is not a WIP', () => {

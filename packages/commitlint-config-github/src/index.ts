@@ -22,16 +22,16 @@ const supportedTypes = [
 
 export const commitlintConfigGitHub: CommitlintConfigGitHub = {
   rules: {
-    [commitlintGitHubRules.issueNumberMissing]: [2, When.NEVER],
+    [commitlintGitHubRules.issueNumberMissing]: [2, When.NON_WIPS_NEVER],
     [commitlintGitHubRules.issueNumberFormat]: [2, When.ALWAYS],
     [commitlintGitHubRules.issueNumberDuplicate]: [2, When.NEVER],
 
     [commitlintGitHubRules.wipAllowed]: [2, When.ALWAYS],
 
-    [commitlintGitHubRules.subjectEmpty]: [2, When.NEVER],
+    [commitlintGitHubRules.subjectEmpty]: [2, When.NON_WIPS_NEVER],
     [commitlintGitHubRules.subjectSeparator]: [2, When.ALWAYS],
-    [commitlintGitHubRules.subjectCase]: [2, When.ALWAYS, 'sentence-case'],
-    [commitlintGitHubRules.subjectFullStop]: [1, When.ALWAYS], // Warning only
+    [commitlintGitHubRules.subjectCase]: [2, When.NON_WIPS_ALWAYS, 'sentence-case'],
+    [commitlintGitHubRules.subjectFullStop]: [1, When.NON_WIPS_ALWAYS], // Warning only
 
     [commitlintGitHubRules.typeCase]: [2, When.ALWAYS, 'lower-case'],
     [commitlintGitHubRules.typeEnum]: [2, When.ALWAYS, supportedTypes],

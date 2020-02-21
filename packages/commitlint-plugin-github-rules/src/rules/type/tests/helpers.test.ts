@@ -45,7 +45,7 @@ describe('typeRuleResolver', () => {
       BASE_RESOLVER,
       typeAdapter,
       EXPECTED_PARSED,
-      When.ALWAYS,
+      When.NON_WIPS_ALWAYS,
       EXPECTED_VALUE,
     );
 
@@ -56,7 +56,7 @@ describe('typeRuleResolver', () => {
       BASE_RESOLVER,
       typeAdapter,
       EXPECTED_PARSED,
-      When.IGNORED,
+      When.NON_WIPS_ALWAYS,
       EXPECTED_VALUE,
     );
 
@@ -67,7 +67,29 @@ describe('typeRuleResolver', () => {
       BASE_RESOLVER,
       typeAdapter,
       EXPECTED_PARSED,
-      When.NEVER,
+      When.NON_WIPS_NEVER,
+      EXPECTED_VALUE,
+    );
+
+    // NON_WIPS_ALWAYS - It doesn't make sense to pass NON_WIPS_ALWAYS explicitly since we only validate non-WIPs but test for sanity purposes
+    expect(ruleResolver(EXPECTED_PARSED, When.NON_WIPS_ALWAYS, EXPECTED_VALUE)).toEqual(RESULT_FROM_BASE_RESOLVER);
+
+    expect(mockedResolveRuleUsingBaseResolver).toHaveBeenCalledWith(
+      BASE_RESOLVER,
+      typeAdapter,
+      EXPECTED_PARSED,
+      When.NON_WIPS_ALWAYS,
+      EXPECTED_VALUE,
+    );
+
+    // NON_WIPS_NEVER - It doesn't make sense to pass NON_WIPS_NEVER explicitly since we only validate non-WIPs but test for sanity purposes
+    expect(ruleResolver(EXPECTED_PARSED, When.NON_WIPS_NEVER, EXPECTED_VALUE)).toEqual(RESULT_FROM_BASE_RESOLVER);
+
+    expect(mockedResolveRuleUsingBaseResolver).toHaveBeenCalledWith(
+      BASE_RESOLVER,
+      typeAdapter,
+      EXPECTED_PARSED,
+      When.NON_WIPS_NEVER,
       EXPECTED_VALUE,
     );
   });
