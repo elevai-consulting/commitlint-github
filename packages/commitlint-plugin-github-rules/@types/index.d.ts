@@ -1,4 +1,5 @@
 import { When } from 'commitlint-github-utils/@types';
+import { ParsedCommitMessage } from 'commitlint-github-utils';
 
 export type RuleResolverResult = [boolean, string?];
 
@@ -18,6 +19,20 @@ export type BaseParsedCommit = Partial<{
 }>;
 
 export type RuleResolver<T> = (parsed: BaseParsedCommit, when?: When, value?: T) => RuleResolverResult;
+
+export type WrappedRuleResolver<T> = (
+  baseResolver: RuleResolver<T>,
+  adapter: BaseParsedCommitAdapter,
+  parsed: BaseParsedCommit,
+  when?: When,
+  value?: T,
+) => RuleResolverResult;
+
+export type BaseParsedCommitAdapter = (parsed: ParsedCommitMessage) => BaseParsedCommit;
+
+export type WhenAndValue<T> = [When, T?];
+
+export type WhenAndRequiredValue<T> = [When, T];
 
 export interface CommitlintPluginGitHub {
   rules: {
