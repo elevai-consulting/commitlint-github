@@ -27,7 +27,7 @@ export const ISSUE_NUMBER_PATTERN = /^#(?<issueNumber>\d+)$/;
 
 // Exclude matching 'WIP' as the start of a description using a negative look-ahead
 // Instead should match WIP_WITH_JUST_ISSUE_NUMBERS_PATTERN below
-export const ISSUE_NUMBERS_PATTERN = /^\((?<issues>.*?)\)(?: (?<type>.+?):)?(?!\s*WIP)(?<description>.*)/;
+export const ISSUE_NUMBERS_PATTERN = /^\((?<issues>.*?)\)(?: (?<type>\S+?):)?(?!\s*WIP)(?<description>.*)/;
 
 // Allow WIPs to avoid specifying issue number as should only exist on feature branches which are per issue
 // Allow either 'WIP: ...', 'WIP - ...', 'WIP2', 'WIP 2', 'WIP 2: ...', 'WIP 2 - ...' etc.
