@@ -5,6 +5,7 @@
     "lib": ["DOM", "ES2017", "ES2018", "ESNext"],
     "moduleResolution": "node",
     "strict": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   }
 }
