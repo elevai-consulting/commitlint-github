@@ -1,7 +1,15 @@
 /* eslint-disable prettier/prettier */
 import parseCommitMessage from '../parseCommitMessage';
 
-const COMMIT_MESSAGE = 'Test commit message.';
+import {
+  COMMIT_MESSAGE,
+  ISSUE_NUMBER,
+  COMMIT_TYPE,
+  MULTI_LINE_COMMIT_MESSAGE,
+  MULTI_LINE_COMMIT_MESSAGE_WITH_TYPE,
+  MULTI_LINE_WIP_COMMIT_MESSAGES,
+  MULTI_LINE_WIP_COMMIT_MESSAGE_WITH_ISSUE_NUMBERS,
+} from './parserTestData';
 
 describe('commitlintPluginGitHubTests', () => {
   it('should return correct issue numbers', () => {
@@ -79,6 +87,14 @@ describe('commitlintPluginGitHubTests', () => {
     ).toEqual([123, 45]);
   });
 
+  it('should return correct issue numbers for multi-line commit messages', () => {
+    [
+      MULTI_LINE_COMMIT_MESSAGE,
+      MULTI_LINE_COMMIT_MESSAGE_WITH_TYPE,
+      MULTI_LINE_WIP_COMMIT_MESSAGE_WITH_ISSUE_NUMBERS,
+    ].forEach(commitMessage => expect(parseCommitMessage(commitMessage).issueNumbers).toEqual([ISSUE_NUMBER]));
+  });
+
   it('should return raw issue numbers', () => {
     // Non-numeric issue numbers prefix
     expect(
@@ -101,6 +117,14 @@ describe('commitlintPluginGitHubTests', () => {
     expect(
       parseCommitMessage(`( #123,#45 ) ${COMMIT_MESSAGE}`).rawIssueNumbers
     ).toEqual('#123,#45');
+  });
+
+  it('should return correct raw issue numbers for multi-line commit messages', () => {
+    [
+      MULTI_LINE_COMMIT_MESSAGE,
+      MULTI_LINE_COMMIT_MESSAGE_WITH_TYPE,
+      MULTI_LINE_WIP_COMMIT_MESSAGE_WITH_ISSUE_NUMBERS,
+    ].forEach(commitMessage => expect(parseCommitMessage(commitMessage).rawIssueNumbers).toEqual(`#${ISSUE_NUMBER}`));
   });
 
   it('should return no raw issue numbers', () => {
@@ -168,6 +192,11 @@ describe('commitlintPluginGitHubTests', () => {
     expect(
       parseCommitMessage(`( ) ${COMMIT_MESSAGE}`).rawIssueNumbers
     ).toEqual('');
+  });
+
+  it('should return no raw issue numbers for multi-line WIP commit messages without them', () => {
+    MULTI_LINE_WIP_COMMIT_MESSAGES
+      .forEach(commitMessage => expect(parseCommitMessage(commitMessage).rawIssueNumbers).toBeUndefined);
   });
 
   it('should return no issue numbers', () => {
@@ -294,7 +323,12 @@ describe('commitlintPluginGitHubTests', () => {
     ).toEqual([]);
   });
 
-  it('should return correct type', () => {
+  it('should return no issue numbers for multi-line WIP commit messages without them', () => {
+    MULTI_LINE_WIP_COMMIT_MESSAGES
+      .forEach(commitMessage => expect(parseCommitMessage(commitMessage).issueNumbers).toEqual([]));
+  });
+
+  it('should return the correct type', () => {
     expect(
       parseCommitMessage(`(#1) ${COMMIT_MESSAGE}`).type
     ).toBeUndefined();
@@ -320,7 +354,11 @@ describe('commitlintPluginGitHubTests', () => {
     ).toEqual('chore');
   });
 
-  it('should return an empty type for WIPs', () => {
+  it('should return the correct type for multi-line commit messages with them', () => {
+    expect(parseCommitMessage(MULTI_LINE_COMMIT_MESSAGE_WITH_TYPE).type).toEqual(COMMIT_TYPE);
+  });
+
+  it('should return no type for WIP commit messages', () => {
     expect(
       parseCommitMessage(`(#123) WIP: ${COMMIT_MESSAGE}`).type
     ).toBeUndefined();
@@ -380,6 +418,14 @@ describe('commitlintPluginGitHubTests', () => {
     expect(
       parseCommitMessage(`WIP: ${COMMIT_MESSAGE} (#22)`).type
     ).toBeUndefined();
+  });
+
+  it('should return no type for multi-line commit messages without them', () => {
+    [
+      MULTI_LINE_COMMIT_MESSAGE,
+      MULTI_LINE_WIP_COMMIT_MESSAGE_WITH_ISSUE_NUMBERS,
+      ...MULTI_LINE_WIP_COMMIT_MESSAGES,
+    ].forEach(commitMessage => expect(parseCommitMessage(commitMessage).type).toBeUndefined());
   });
 
   it('should return correct WIP status', () => {
@@ -505,6 +551,20 @@ describe('commitlintPluginGitHubTests', () => {
     ).toBe(true);
   });
 
+  it('should return the correct WIP status for multi-line non-WIP commit messages', () => {
+    [
+      MULTI_LINE_COMMIT_MESSAGE,
+      MULTI_LINE_COMMIT_MESSAGE_WITH_TYPE,
+    ].forEach(commitMessage => expect(parseCommitMessage(commitMessage).isWip).toBe(false));
+  });
+
+  it('should return the correct WIP status for multi-line WIP commit messages', () => {
+    [
+      MULTI_LINE_WIP_COMMIT_MESSAGE_WITH_ISSUE_NUMBERS,
+      ...MULTI_LINE_WIP_COMMIT_MESSAGES,
+    ].forEach(commitMessage => expect(parseCommitMessage(commitMessage).isWip).toBe(true));
+  });
+
   it('should return correct subject', () => {
     expect(
       parseCommitMessage(`(#1) ${COMMIT_MESSAGE}`).subject
@@ -603,5 +663,14 @@ describe('commitlintPluginGitHubTests', () => {
     expect(
       parseCommitMessage(`WIP: ${COMMIT_MESSAGE} (#22)`).subject
     ).toEqual(`${COMMIT_MESSAGE} (#22)`);
+  });
+
+  it('should return the correct subject for multi-line commit messages', () => {
+    [
+      MULTI_LINE_COMMIT_MESSAGE,
+      MULTI_LINE_COMMIT_MESSAGE_WITH_TYPE,
+      MULTI_LINE_WIP_COMMIT_MESSAGE_WITH_ISSUE_NUMBERS,
+      ...MULTI_LINE_WIP_COMMIT_MESSAGES,
+    ].forEach(commitMessage => expect(parseCommitMessage(commitMessage).subject).toEqual(COMMIT_MESSAGE));
   });
 });
