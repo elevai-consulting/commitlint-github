@@ -3,7 +3,7 @@ import * as shell from 'shelljs';
 
 describe('commitlintPluginGitHubTests', () => {
   const testCommitMessages = {
-    singleScope: 'IB-2121: test commit message',
+    singleScope: '(#1) Test commit message.',
   };
 
   it('should load with success provided commitlint config', () => {
