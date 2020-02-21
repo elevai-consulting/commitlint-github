@@ -28,6 +28,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': ['error', prettierOptions],
+    // Disabling for functions allows for breakdown of business logic into separate methods without having to order them backwards
+    '@typescript-eslint/no-use-before-define': ['error', { 'functions': false }],
     'import/extensions': [
       'error',
       'ignorePackages',
