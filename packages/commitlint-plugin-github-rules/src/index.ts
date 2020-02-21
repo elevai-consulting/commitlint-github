@@ -14,6 +14,14 @@ import {
   subjectSeparatorRuleResolver,
 } from './rules/subject';
 
+import {
+  typeEmptyRuleResolver,
+  typeCaseRuleResolver,
+  typeEnumRuleResolver,
+  typeMinLengthRuleResolver,
+  typeMaxLengthRuleResolver,
+} from './rules/type';
+
 const commitlintGitHubRules = utils.commitlintGitHubConstants.GITHUB_RULES;
 
 export const commitlintPluginGitHub: CommitlintPluginGitHub = {
@@ -28,6 +36,12 @@ export const commitlintPluginGitHub: CommitlintPluginGitHub = {
     [commitlintGitHubRules.subjectMinLength]: subjectMinLengthRuleResolver,
     [commitlintGitHubRules.subjectMinLength]: subjectMaxLengthRuleResolver,
     [commitlintGitHubRules.subjectSeparator]: subjectSeparatorRuleResolver,
+
+    [commitlintGitHubRules.typeEmpty]: typeEmptyRuleResolver,
+    [commitlintGitHubRules.typeCase]: typeCaseRuleResolver,
+    [commitlintGitHubRules.typeEnum]: typeEnumRuleResolver,
+    [commitlintGitHubRules.typeMinLength]: typeMinLengthRuleResolver,
+    [commitlintGitHubRules.typeMinLength]: typeMaxLengthRuleResolver,
   },
 };
 
