@@ -1,6 +1,22 @@
 export interface Rules {
   issueNumberMissing: string;
   issueNumberFormat: string;
+  issueNumberDuplicate: string;
+
+  wipAllowed: string;
+
+  subjectEmpty: string;
+  subjectCase: string;
+  subjectFullStop: string;
+  subjectMinLength: string;
+  subjectMaxLength: string;
+  subjectSeparator: string;
+
+  typeCase: string;
+  typeEmpty: string;
+  typeEnum: string;
+  typeMaxLength: string;
+  typeMinLength: string;
 }
 
 export interface CommitlintGitHubConstants {
@@ -27,19 +43,44 @@ export type ParsedCommitMessage = {
   rawIssueNumbers?: string;
   isWip: boolean;
   type?: string;
+  subjectSeparator?: string;
   subject?: string;
   body: string[];
 };
 
-export type CommitParser = (unparsedCommitMessage: string, parserOptions?: ParserOptions) => ParsedCommitMessage;
-
-export interface CommitlintGitHubUtils {
-  parseCommitMessage: CommitParser;
-  commitlintGitHubConstants: CommitlintGitHubConstants;
+export const enum When {
+  ALWAYS = 'always',
+  NEVER = 'never',
+  IGNORED = 'ignored', // For when the rule doesn't vary based on the 'when' value passed in
 }
 
-export const commitlintGitHubConstants: CommitlintGitHubConstants;
-export const parseCommitMessage: CommitParser;
+// TODO: Remove once @commitlint/types is published
+export type TargetCaseType =
+  | 'camel-case'
+  | 'kebab-case'
+  | 'snake-case'
+  | 'pascal-case'
+  | 'start-case'
+  | 'upper-case'
+  | 'uppercase'
+  | 'sentence-case'
+  | 'sentencecase'
+  | 'lower-case'
+  | 'lowercase'
+  | 'lowerCase';
+
+export type WipHandledResult = {
+  isWipValidated: boolean;
+  when?: When;
+};
+
+export interface CommitlintGitHubUtils {
+  commitlintGitHubConstants: CommitlintGitHubConstants;
+
+  parseCommitMessage(unparsedCommitMessage: string, parserOptions?: ParserOptions): ParsedCommitMessage;
+  isNegated(when?: string): boolean;
+  handleWipCommits(commitMessage: ParsedCommitMessage, whenPassedIn?: When): WipHandledResult;
+}
 
 declare const commitlintGitHubUtils: CommitlintGitHubUtils;
 export default commitlintGitHubUtils;
