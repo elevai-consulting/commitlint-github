@@ -1,6 +1,25 @@
 {
   "private": true,
-  "name": "commitlint-github-e2e-tests",
+  "name": "@elevai/commitlint-github-e2e-tests",
+  "description": "Basic end-to-end tests.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Elevai Consulting <account@elevai.com> (https://www.elevai.com)",
+  "keywords": [
+    "commitlint",
+    "commitlintplugin",
+    "github-commitlint",
+    "github",
+    "multipack"
+  ],
+  "homepage": "https://github.com/elevai-consulting/commitlint-github#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elevai-consulting/commitlint-github.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elevai-consulting/commitlint-github/issues"
+  },
   "devDependencies": {
     "@types/jest": "^25.1.0",
     "ts-jest": "^25.2.1",
@@ -10,8 +29,8 @@
     "typescript": "^3.8.2"
   },
   "dependencies": {
-    "commitlint-config-github": "file:../commitlint-config-github",
-    "commitlint-github-utils": "file:../commitlint-github-utils",
-    "commitlint-plugin-github": "file:../commitlint-plugin-github"
+    "@elevai/commitlint-config-github": "file:../commitlint-config-github",
+    "@elevai/commitlint-github-utils": "file:../commitlint-github-utils",
+    "@elevai/commitlint-plugin-github": "file:../commitlint-plugin-github"
   }
 }

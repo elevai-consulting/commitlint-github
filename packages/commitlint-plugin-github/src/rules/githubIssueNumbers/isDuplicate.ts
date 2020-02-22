@@ -1,4 +1,4 @@
-import utils from 'commitlint-github-utils';
+import utils from '@elevai/commitlint-github-utils';
 import { RuleResolver } from '../../../@types';
 
 const isNoDuplicates = (issueNumbers: number[]): boolean => new Set(issueNumbers).size === issueNumbers.length;

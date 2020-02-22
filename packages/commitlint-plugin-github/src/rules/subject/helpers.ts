@@ -1,4 +1,4 @@
-import { ParsedCommitMessage } from 'commitlint-github-utils';
+import { ParsedCommitMessage } from '@elevai/commitlint-github-utils';
 
 import { BaseParsedCommit, RuleResolverResult, RuleResolver } from '../../../@types';
 import resolveRuleUsingBaseResolver from '../utils/wrappedRuleResolver';

@@ -1,4 +1,4 @@
-import utils from 'commitlint-github-utils';
+import utils from '@elevai/commitlint-github-utils';
 import { CommitlintPluginGitHub } from '../@types';
 
 import githubIssueNumberMissingRuleResolver from './rules/githubIssueNumbers/isMissing';

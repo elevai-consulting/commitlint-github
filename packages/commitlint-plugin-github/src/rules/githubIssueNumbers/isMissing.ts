@@ -1,5 +1,5 @@
-import { When } from 'commitlint-github-utils/@types';
-import utils from 'commitlint-github-utils';
+import { When } from '@elevai/commitlint-github-utils/@types';
+import utils from '@elevai/commitlint-github-utils';
 import { RuleResolver } from '../../../@types';
 
 const githubIssueNumberMissingRuleResolver: RuleResolver<boolean> = (parsed, when) => {

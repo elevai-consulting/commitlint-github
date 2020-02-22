@@ -1,13 +1,9 @@
 {
-  "name": "commitlint-config-github",
+  "name": "@elevai/commitlint-config-github",
   "description": "A recomended config who contain preconfigured rules for github commits messages style",
   "version": "0.1.0",
   "license": "MIT",
-  "author": {
-    "name": "Elevai Consulting",
-    "email": "account@elevai.com",
-    "url": "https://www.elevai.com"
-  },
+  "author": "Elevai Consulting <account@elevai.com> (https://www.elevai.com)",
   "keywords": [
     "commitlint",
     "commitlintplugin",
@@ -15,9 +11,10 @@
     "github",
     "multipack"
   ],
+  "homepage": "https://github.com/elevai-consulting/commitlint-github#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elevai-consulting/commitlint-github"
+    "url": "git+https://github.com/elevai-consulting/commitlint-github.git"
   },
   "bugs": {
     "url": "https://github.com/elevai-consulting/commitlint-github/issues"
@@ -37,6 +34,6 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "commitlint-github-utils": "^0.1.0"
+    "@elevai/commitlint-github-utils": "^0.1.0"
   }
 }

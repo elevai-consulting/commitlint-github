@@ -1,5 +1,5 @@
 // import { TargetSeparatorType } from '@commitlint/types'; // When it is published
-import { When } from 'commitlint-github-utils/@types';
+import { When } from '@elevai/commitlint-github-utils/@types';
 import { WhenAndValue, RuleResolverResult } from '../../../../@types';
 import { subjectSeparatorRuleResolver } from '..';
 import runRule from '../../utils/tests/utils';

@@ -1,13 +1,9 @@
 {
-  "name": "commitlint-github",
+  "name": "@elevai/commitlint-github",
   "description": "✔️❌ Shareable commitlint config enforcing prefixing each commit with associated GitHub Issue(s)",
   "version": "0.1.0",
   "license": "MIT",
-  "author": {
-    "name": "Elevai Consulting",
-    "email": "account@elevai.com",
-    "url": "https://www.elevai.com"
-  },
+  "author": "Elevai Consulting <account@elevai.com> (https://www.elevai.com)",
   "keywords": [
     "commitlint",
     "commitlintplugin",
@@ -15,9 +11,10 @@
     "github",
     "multipack"
   ],
+  "homepage": "https://github.com/elevai-consulting/commitlint-github#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elevai-consulting/commitlint-github"
+    "url": "git+https://github.com/elevai-consulting/commitlint-github.git"
   },
   "bugs": {
     "url": "https://github.com/elevai-consulting/commitlint-github/issues"
@@ -48,12 +45,12 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@elevai/commitlint-config-github": "file:./packages/commitlint-config-github",
+    "@elevai/commitlint-github-utils": "file:./packages/commitlint-github-utils",
+    "@elevai/commitlint-plugin-github": "file:./packages/commitlint-plugin-github",
     "@types/jest": "^25.1.0",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
-    "commitlint-config-github": "file:./packages/commitlint-config-github",
-    "commitlint-github-utils": "file:./packages/commitlint-github-utils",
-    "commitlint-plugin-github": "file:./packages/commitlint-plugin-github",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",

@@ -6,8 +6,8 @@
 // @ts-ignore
 import baseRules from '@commitlint/rules';
 // import { TargetCaseType } from '@commitlint/types'; // When it is published
-import { TargetCaseType } from 'commitlint-github-utils/@types';
-import utils from 'commitlint-github-utils';
+import { TargetCaseType } from '@elevai/commitlint-github-utils/@types';
+import utils from '@elevai/commitlint-github-utils';
 
 import { RuleResolver } from '../../../@types';
 import { subjectRuleResolver } from './helpers';

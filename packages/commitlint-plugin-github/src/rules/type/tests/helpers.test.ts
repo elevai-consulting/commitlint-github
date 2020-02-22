@@ -1,4 +1,4 @@
-import { ParsedCommitMessage, When } from 'commitlint-github-utils/@types';
+import { ParsedCommitMessage, When } from '@elevai/commitlint-github-utils/@types';
 import { RuleResolver, RuleResolverResult, BaseParsedCommit } from '../../../../@types';
 import { typeAdapter, typeRuleResolver } from '../helpers';
 

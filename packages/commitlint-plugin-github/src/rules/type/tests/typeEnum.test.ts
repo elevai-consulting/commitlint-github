@@ -1,5 +1,5 @@
 // import { TargetEnumType } from '@commitlint/types'; // When it is published
-import { When } from 'commitlint-github-utils/@types';
+import { When } from '@elevai/commitlint-github-utils/@types';
 import { WhenAndRequiredValue, RuleResolverResult } from '../../../../@types';
 import { typeEnumRuleResolver } from '../index';
 import runRule from '../../utils/tests/utils';

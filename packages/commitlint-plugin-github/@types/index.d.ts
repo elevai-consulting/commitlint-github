@@ -1,5 +1,5 @@
-import { When } from 'commitlint-github-utils/@types';
-import { ParsedCommitMessage } from 'commitlint-github-utils';
+import { When } from '@elevai/commitlint-github-utils/@types';
+import { ParsedCommitMessage } from '@elevai/commitlint-github-utils';
 
 export type RuleResolverResult = [boolean, string?];
 

@@ -2,8 +2,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import baseRules from '@commitlint/rules';
-import { When } from 'commitlint-github-utils/@types';
-import utils from 'commitlint-github-utils';
+import { When } from '@elevai/commitlint-github-utils/@types';
+import utils from '@elevai/commitlint-github-utils';
 
 import { BaseParsedCommit, RuleResolverResult, RuleResolver } from '../../../../@types';
 import { typeAdapter } from '../helpers';

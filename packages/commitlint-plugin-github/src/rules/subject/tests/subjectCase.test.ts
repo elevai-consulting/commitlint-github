@@ -1,5 +1,5 @@
 // import { TargetCaseType } from '@commitlint/types'; // When it is published
-import { When, TargetCaseType } from 'commitlint-github-utils/@types';
+import { When, TargetCaseType } from '@elevai/commitlint-github-utils/@types';
 import { WhenAndRequiredValue, RuleResolverResult } from '../../../../@types';
 import { subjectCaseRuleResolver } from '..';
 import runRule from '../../utils/tests/utils';
