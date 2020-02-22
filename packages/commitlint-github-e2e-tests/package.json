@@ -12,6 +12,6 @@
   "dependencies": {
     "commitlint-config-github": "file:../commitlint-config-github",
     "commitlint-github-utils": "file:../commitlint-github-utils",
-    "commitlint-plugin-github-rules": "file:../commitlint-plugin-github-rules"
+    "commitlint-plugin-github": "file:../commitlint-plugin-github"
   }
 }

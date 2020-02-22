@@ -10,8 +10,8 @@
   },
   "keywords": [
     "commitlint",
+    "commitlintplugin",
     "github-commitlint",
-    "github-style",
     "github",
     "multipack"
   ],

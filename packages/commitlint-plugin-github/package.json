@@ -1,5 +1,5 @@
 {
-  "name": "commitlint-plugin-github-rules",
+  "name": "commitlint-plugin-github",
   "description": "A plugin that implement all github commits messages style rules and validate commit messages",
   "version": "0.1.0",
   "license": "MIT",
