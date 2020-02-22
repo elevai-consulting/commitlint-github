@@ -1,3 +1,14 @@
-# Dependency directories
+# Internal files and directories
+.git/
+.vscode/
+
+# Generated files and directories
+**/package-lock.json
+
 node_modules/
 **/build
+coverage/
+
+# Ignore this test file as the expect statements are structured in a non-standard but easier to read way
+# Could fix this better via rules in future, but not sure how currently
+packages/commitlint-github-utils/src/tests/parseCommitMessage.test.ts

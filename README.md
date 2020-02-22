@@ -17,6 +17,7 @@ For Example:
 ```
 
 Note: The Issue Number prefix has to:
+
 - Use the GitHub convention of referencing the Issue Number using a '\#'; e.g. '\#42'
   - This is so that GitHub automatically creates a clickable link to the associated Issue when viewed in the browser
 - But be encapsulated with parentheses at the beginning of the first line of the commit
@@ -39,29 +40,39 @@ In the rare case that a commit spans multiple GitHub Issues, you can include the
 ```
 
 ### WIP Commits
+
 Finally, when working using Feature Branches it is very common to create Work-In-Progress (WIP) commits and these can be added as follows, though can also be prohibited via custom rule configuration. This is particularly useful for validating PRs to ensure no WIP commits are merged:
 
 ```
 WIP
 ```
+
 or
+
 ```
 WIP: This is my git commit...
 ```
+
 or
+
 ```
 WIP - This is my git commit...
 ```
+
 or
+
 ```
 WIP 2: This is my git commit...
 ```
+
 or
+
 ```
 WIP 2 - This is my git commit...
 ```
 
 ### Credit
+
 As mentioned earlier, this repository was inspired by a typical Jira convention of referencing the Jira Issue at the beginning of the commit. In fact this repository was created using an existing commitlint plugin repository as its starting point.
 
 This repository - [commitlint-jira](https://github.com/Gherciu/commitlint-jira/) - was created by [@Gherciu](https://github.com/Gherciu) for checking for code commit messages following Jira conventions. After we forked it we have customized it to make it more suitable for GitHub Issues.
@@ -86,8 +97,8 @@ Configure commitlint to use github commits messages style config:
 // commitlint.config.js
 module.exports = {
   plugins: ['@elevai/commitlint-plugin-github'],
-  extends: ['@elevai/commitlint-config-github']
-}
+  extends: ['@elevai/commitlint-config-github'],
+};
 ```
 
 ### Linting Commit Comments Locally
@@ -401,7 +412,7 @@ git commit -m "WIP: ok" # WIPs aren't validated
 // commitlint.config.js
 module.exports = {
   plugins: ['@elevai/commitlint-plugin-github'],
-  extends: ['@elevai/commitlint-config-github']
+  extends: ['@elevai/commitlint-config-github'],
   rules: {
     // To override default configuration, e.g. to disallow WIP commits:
 +   'wip-allowed': [2, 'never']

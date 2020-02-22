@@ -1,8 +1,8 @@
 /* eslint-disable */
-const path = require('path')
+const path = require('path');
 
 module.exports = {
-  mode:process.env.NODE_ENV,
+  mode: process.env.NODE_ENV,
   target: 'node',
   entry: path.resolve(__dirname, 'src/index.ts'),
   output: {
@@ -12,7 +12,7 @@ module.exports = {
     libraryTarget: 'umd',
     libraryExport: 'default',
     umdNamedDefine: true,
-    globalObject: 'this'
+    globalObject: 'this',
   },
   module: {
     rules: [
@@ -26,4 +26,4 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
-}
+};

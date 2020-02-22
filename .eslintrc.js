@@ -1,17 +1,10 @@
-const fs = require('fs')
-const path = require('path')
-
-const prettierOptions = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8'),
-)
-
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
-  'airbnb',
-  'plugin:@typescript-eslint/recommended',
-  'prettier/@typescript-eslint',
-  'plugin:prettier/recommended',
+    'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
     project: './tsconfig.json',
@@ -27,22 +20,24 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'prettier/prettier': ['error', prettierOptions],
     // Disabling for functions allows for breakdown of business logic into separate methods without having to order them backwards
-    '@typescript-eslint/no-use-before-define': ['error', { 'functions': false }],
+    '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
     'import/extensions': [
       'error',
       'ignorePackages',
       {
-        "ts": "never"
-      }
-   ]
+        ts: 'never',
+      },
+    ],
   },
   settings: {
     'import/resolver': {
       node: {
-        'extensions': ['.ts', '.d.ts'],
+        extensions: ['.ts', '.d.ts'],
       },
     },
+    react: {
+      version: 'latest',
+    },
   },
-}
+};

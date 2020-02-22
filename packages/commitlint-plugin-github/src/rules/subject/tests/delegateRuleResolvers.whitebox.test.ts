@@ -26,6 +26,7 @@ const EXPECTED_VALUE = 'dummy-value';
 
 function validateDelegateRuleResolver(
   delegateRuleName: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   subjectRuleResolver: RuleResolver<any>,
   defaultValue?: string,
 ): void {
