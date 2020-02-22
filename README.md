@@ -86,7 +86,7 @@ Configure commitlint to use github commits messages style config:
 // commitlint.config.js
 module.exports = {
   plugins: ['@elevai/commitlint-plugin-github'],
-  extends: ['github'],
+  extends: ['@elevai/commitlint-config-github']
 }
 ```
 
@@ -400,8 +400,8 @@ git commit -m "WIP: ok" # WIPs aren't validated
 ```diff
 // commitlint.config.js
 module.exports = {
-  plugins: ['commitlint-plugin-github'],
-  extends: ['github'],
+  plugins: ['@elevai/commitlint-plugin-github'],
+  extends: ['@elevai/commitlint-config-github']
   rules: {
     // To override default configuration, e.g. to disallow WIP commits:
 +   'wip-allowed': [2, 'never']

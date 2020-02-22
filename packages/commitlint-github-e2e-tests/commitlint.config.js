@@ -1,4 +1,4 @@
 module.exports = {
-  plugins: ['commitlint-plugin-github'],
-  extends: ['github'],
+  plugins: ['@elevai/commitlint-plugin-github'],
+  extends: ['@elevai/commitlint-config-github']
 }
