@@ -1,6 +1,4 @@
 <div align="center">
-  <img height="200"
-    src="https://raw.githubusercontent.com/elevai-consulting/commitlint-github/master/logo.png">
   <h1>commitlint-config-github</h1>
   <p>A <b>recomended</b> config who contain preconfigured rules for github commits messages style. Part of <a href="https://github.com/elevai-consulting/commitlint-github">commitlint-github</a> monorepo</p>
 </div>

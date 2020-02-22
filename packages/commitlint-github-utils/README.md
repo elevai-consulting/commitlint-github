@@ -1,6 +1,4 @@
 <div align="center">
-  <img width="300" height="200"
-    src="https://raw.githubusercontent.com/elevai-consulting/commitlint-github/master/logo.png">
   <h1>commitlint-github-utils</h1>
   <p>A set of utils for commitlint-github package. Part of <a href="https://github.com/elevai-consulting/commitlint-github">commitlint-github</a> monorepo</p>
 </div>
