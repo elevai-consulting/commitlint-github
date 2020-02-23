@@ -1,0 +1,52 @@
+name: Validate Pull Request
+on: [pull_request]
+
+jobs:
+  run-tests-and-linters:
+    name: All tests and linters
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        # We don't just checkout the last commit, but all commits
+        # This is so the commitlint GitHub Action below can lint commit messages
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: npm install and build
+        run: |
+          npm install
+          npm run link:packages
+          npm run build:packages
+        env:
+          CI: true
+
+      - name: Run Tests
+        run: npm run test:packages
+        env:
+          CI: true
+
+      - name: Run linters
+        uses: samuelmeuli/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          # Enable linters
+          eslint: true
+          prettier: true
+
+      - name: Set NODE_PATH so the commitlint action picks up the custom commitlint plugin from the Node.js dependencies
+        # $GITHUB_WORKSPACE is the path to your repository
+        run: echo "::set-env name=NODE_PATH::${GITHUB_WORKSPACE}/node_modules"
+
+      - name: Run commitlint action
+        uses: wagoid/commitlint-github-action@v1
+        with:
+          configFile: ".github/workflows/commitlint.pr.config.js"
