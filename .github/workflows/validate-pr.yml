@@ -11,9 +11,12 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
-        # We don't just checkout the last commit, but all commits
-        # This is so the commitlint GitHub Action below can lint commit messages
         with:
+          # Checkout the PR branch to avoid detached heads as seems to break the commitlint action
+          # See: https://github.com/actions/checkout/issues/124#issuecomment-586664611
+          ref: ${{ github.event.pull_request.head.ref }}
+          # We don't just checkout the last commit, but all commits
+          # This is so the commitlint GitHub Action below can lint commit messages
           fetch-depth: 0
 
       - name: Set up Node.js
