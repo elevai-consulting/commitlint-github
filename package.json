@@ -29,7 +29,8 @@
     "test:packages": "jest --coverage",
     "watch:test:packages": "jest --watch",
     "lint": "eslint . --ext .ts,.js --max-warnings=0 && prettier -c '**/*.{ts,js,json,yml,md}'",
-    "fix": "eslint . --ext .ts,.js --fix --max-warnings=0"
+    "fix": "eslint . --ext .ts,.js --fix && prettier --write '**/*.{ts,js,json,yml,md}'",
+    "version": "npm run fix"
   },
   "lint-staged": {
     "*.{ts,js,json,yml,md}": [
