@@ -1,7 +1,7 @@
 {
   "name": "@elevai/commitlint-github-utils",
   "description": "A set of utils for commitlint-github monorepo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Elevai Consulting <account@elevai.com> (https://www.elevai.com)",
   "keywords": [

@@ -1,7 +1,7 @@
 {
   "name": "@elevai/commitlint-config-github",
   "description": "A recomended config who contain preconfigured rules for github commits messages style",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Elevai Consulting <account@elevai.com> (https://www.elevai.com)",
   "keywords": [
@@ -34,6 +34,6 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@elevai/commitlint-github-utils": "^0.1.0"
+    "@elevai/commitlint-github-utils": "^0.1.1"
   }
 }

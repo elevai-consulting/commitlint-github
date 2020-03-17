@@ -25,11 +25,12 @@
     "clean:packages": "lerna clean --yes",
     "watch:packages": "lerna run watch",
     "link:packages": "lerna bootstrap",
-    "publish:packages": "npm run link:packages && npm run build:packages && lerna publish --message=\"chore: publish changed packages\"",
+    "publish:packages": "npm run link:packages && npm run build:packages && lerna publish --message=\"$(./last-commit-issue.sh) Publishing %s to npm.\"",
     "test:packages": "jest --coverage",
     "watch:test:packages": "jest --watch",
     "lint": "eslint . --ext .ts,.js --max-warnings=0 && prettier -c '**/*.{ts,js,json,yml,md}'",
-    "fix": "eslint . --ext .ts,.js --fix --max-warnings=0"
+    "fix": "eslint . --ext .ts,.js --fix && prettier --write '**/*.{ts,js,json,yml,md}'",
+    "version": "npm run fix"
   },
   "lint-staged": {
     "*.{ts,js,json,yml,md}": [
